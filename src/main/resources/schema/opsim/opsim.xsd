@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:jaxb="http://java.sun.com/xml/ns/jaxb" jaxb:version="1.0">
+
+    <xs:simpleType name="ArtifactType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Flower"/>
+            <xs:enumeration value="Plume"/>
+            <xs:enumeration value="Sands"/>
+            <xs:enumeration value="Goblet"/>
+            <xs:enumeration value="Circlet"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="StatType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="HP_Percentage"/>
+            <xs:enumeration value="HP_Fixed"/>
+            <xs:enumeration value="ATK_Percentage"/>
+            <xs:enumeration value="ATK_Fixed"/>
+            <xs:enumeration value="DEF_Percentage"/>
+            <xs:enumeration value="Elemental_Mastery"/>
+            <xs:enumeration value="Energy_Recharge"/>
+            <xs:enumeration value="PhysicalDamageBonus"/>
+            <xs:enumeration value="AnemoDamageBonus"/>
+            <xs:enumeration value="GeoDamageBonus"/>
+            <xs:enumeration value="ElectroDamageBonus"/>
+            <xs:enumeration value="DendroDamageBonus"/>
+            <xs:enumeration value="HydroDamageBonus"/>
+            <xs:enumeration value="PyroDamageBonus"/>
+            <xs:enumeration value="CryoDamageBonus"/>
+            <xs:enumeration value="CritRate"/>
+            <xs:enumeration value="CritDamage"/>
+            <xs:enumeration value="HealingBonus"/>
+        </xs:restriction> 
+    </xs:simpleType>
+
+    <xs:complexType name="Stat">
+        <xs:sequence>
+            <xs:element name="type"  type="StatType"/>
+            <xs:element name="value" type="xs:double"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="Artifact">
+        <xs:sequence>
+            <xs:element name="artifactId" type="xs:int"/>
+            <xs:element name="rarity" type="xs:int"/>
+            <xs:element name="type" type="ArtifactType"/>
+            <xs:element name="mainStat" type="Stat"/>
+        </xs:sequence>
+    </xs:complexType>
+
+</xs:schema>
