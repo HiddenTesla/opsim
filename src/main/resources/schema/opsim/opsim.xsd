@@ -46,6 +46,7 @@
             <xs:element name="artifactId" type="xs:int"/>
             <xs:element name="rarity" type="xs:int"/>
             <xs:element name="type" type="ArtifactType"/>
+            <xs:element name="level" type="xs:int"/>
             <xs:element name="mainStat" type="Stat"/>
         </xs:sequence>
     </xs:complexType>

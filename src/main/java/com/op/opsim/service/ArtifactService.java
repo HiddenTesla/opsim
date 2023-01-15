@@ -4,14 +4,28 @@ import com.op.opsim.generated.Artifact;
 import com.op.opsim.generated.ArtifactType;
 import com.op.opsim.generated.Stat;
 import com.op.opsim.generated.StatType;
+import com.op.opsim.model.arrgegator.MainStatScalingAggregator;
+import com.op.opsim.model.common.Lottery;
+import com.op.opsim.model.arrgegator.MainStatProbabilityAggregator;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
 @Component
 public class ArtifactService {
 
     final private Random random = new Random();
+
+    @Autowired
+    private MainStatProbabilityAggregator mainStatProbabilityAggregator;
+
+    @Autowired
+    private MainStatScalingAggregator mainStatScalingAggregator;
+
+    final private Lottery<String, Double> statLottery = new Lottery<>();
 
     public Artifact createRandomTypeArtifact(int rarity) {
         ArtifactType artifactType = generateRandomArtifactType();
@@ -24,9 +38,9 @@ public class ArtifactService {
         artifact.setArtifactId(-1);
         artifact.setRarity(rarity);
         artifact.setType(artifactType);
+        artifact.setLevel(0);
 
-        Stat mainStat = generateMainStat(rarity, artifactType);
-        artifact.setMainStat(mainStat);
+        assignMainStat(artifact);
 
         return artifact;
     }
@@ -37,14 +51,16 @@ public class ArtifactService {
         return types[index];
     }
 
-    private Stat generateMainStat(int rarity, ArtifactType artifactType) {
-        Stat mainStat = new Stat();
-        mainStat.setType(StatType.ELEMENTAL_MASTERY);
-        mainStat.setValue(28.0);
-        return mainStat;
-    }
-
     private void assignMainStat(Artifact artifact) {
+        int rarity = artifact.getRarity();
+        Map<String, Double> s = mainStatProbabilityAggregator.byRarityAndType(rarity, artifact.getType());
+        String mainStatTypeStr = statLottery.makeLottery(s, null);
+        StatType mainStatType = StatType.fromValue(mainStatTypeStr);
+        List<Double> scalar = mainStatScalingAggregator.byRarityAndType(rarity, mainStatType);
 
+        Stat mainStat = new Stat();
+        mainStat.setType(mainStatType);
+        mainStat.setValue(scalar.get(0));
+        artifact.setMainStat(mainStat);
     }
 }
