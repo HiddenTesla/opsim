@@ -9,29 +9,29 @@ import java.util.Map;
 
 @Component
 @ConfigurationProperties(prefix = "opsim.artifact.probability")
-public class MainStatProbabilityAggregator {
-    private Map<String, Map<String, Map<StatType, Double> > >  mainstat;
+public class SubStatProbabilityAggregator {
 
-    public Map<String, Map<String, Map<StatType, Double>>> getMainstat() {
-        return mainstat;
+    private Map<String, Map<String, Map<StatType, Double>> > substat;
+
+    public Map<String, Map<String, Map<StatType, Double>>> getSubstat() {
+        return substat;
     }
 
-    public MainStatProbabilityAggregator setMainstat(Map<String, Map<String, Map<StatType, Double>>> mainstat) {
-        this.mainstat = mainstat;
+    public SubStatProbabilityAggregator setSubstat(Map<String, Map<String, Map<StatType, Double>>> substat) {
+        this.substat = substat;
         return this;
     }
 
     public Map<String, Map<StatType, Double> > byRarity(Integer rarity) {
-        Map<String, Map<StatType, Double> > any = mainstat.get("any");
+        Map<String, Map<StatType, Double> > any = substat.get("any");
         if (any != null)
             return any;
-        return mainstat.get(rarity.toString());
+        return substat.get(rarity.toString());
     }
 
     public Map<StatType, Double> byRarityAndType(Integer rarity, ArtifactType type) {
         Map<String, Map<StatType, Double> > _byRarity = byRarity(rarity);
-        Map<StatType, Double> _byRarityAndType = _byRarity.get(type.value().toLowerCase());
+        Map<StatType, Double> _byRarityAndType = _byRarity.get("any");
         return _byRarityAndType;
     }
-
 }

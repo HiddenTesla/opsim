@@ -1,58 +1,89 @@
 opsim:
   artifact:
+    quantity:
+      substat:
+        min: 3
+        max: 4
+
     probability:
       mainstat:
         any: # Rarity
           flower:
-            HP_Fixed:  100.0
+            HP_FIXED:  100.0
           plume:
-            ATK_Fixed: 100.0
+            ATK_FIXED: 100.0
           sands:
-            HP_Percentage:  26.68
-            ATK_Percentage: 26.66
-            DEF_Percentage: 26.66
-            Energy_Recharge: 10.00
-            Elemental_Mastery: 10.00
+            HP_PERCENTAGE:  26.68
+            ATK_PERCENTAGE: 26.66
+            DEF_PERCENTAGE: 26.66
+            ENERGY_RECHARGE: 10.00
+            ELEMENTAL_MASTERY: 10.00
           goblet:
-            HP_Percentage:  19.25
-            ATK_Percentage: 19.25
-            DEF_Percentage: 19
-            Elemental_Mastery:   2.50
-            PhysicalDamageBonus: 5.00
-            AnemoDamageBonus:    5.00
-            GeoDamageBonus:      5.00
-            ElectroDamageBonus:  5.00
-            DendroDamageBonus:   5.00
-            HydroDamageBonus:    5.00
-            PyroDamageBonus:     5.00
-            CryoDamageBonus:     5.00
+            HP_PERCENTAGE:  19.25
+            ATK_PERCENTAGE: 19.25
+            DEF_PERCENTAGE: 19
+            ELEMENTAL_MASTERY:   2.50
+            PHYSICAL_DAMAGE_BONUS: 5.00
+            ANEMO_DAMAGE_BONUS:    5.00
+            GEO_DAMAGE_BONUS:      5.00
+            ELECTRO_DAMAGE_BONUS:  5.00
+            DENDRO_DAMAGE_BONUS:   5.00
+            HYDRO_DAMAGE_BONUS:    5.00
+            PYRO_DAMAGE_BONUS:     5.00
+            CRYO_DAMAGE_BONUS:     5.00
           circlet:
-            HP_Percentage:  22.00
-            ATK_Percentage: 22.00
-            DEF_Percentage: 22.00
-            CritRate: 10.00
-            CritDamage: 10.00
-            HealingBonus: 10.00
-            Elemental_Mastery: 4.00
+            HP_PERCENTAGE:  22.00
+            ATK_PERCENTAGE: 22.00
+            DEF_PERCENTAGE: 22.00
+            CRIT_RATE: 10.00
+            CRIT_DAMAGE: 10.00
+            HEALING_BONUS: 10.00
+            ELEMENTAL_MASTERY: 4.00
+      substat:
+        any:
+          any:
+            # It does not matter if below does not add up to 100 as long as their relative ratios are correct.
+            HP_FIXED:  15.00
+            ATK_FIXED: 15.00
+            DEF_FIXED: 15.00
+            HP_PERCENTAGE: 10.00
+            ATK_PERCENTAGE: 10.00
+            DEF_PERCENTAGE: 10.00
+            ENERGY_RECHARGE: 10.00
+            ELEMENTAL_MASTERY: 10.00
+            CRIT_RATE:   7.50
+            CRIT_DAMAGE: 7.50
+
     scaling:
       mainstat:
         5:
-          HP_Fixed:       [717, 1530, 2342, 3155, 3967, 4780]
-          ATK_Fixed:      [47, 100, 152, 205, 258, 311]
-          HP_Percentage:  [7.0, 14.9, 22.8, 30.8, 38.7, 46.6]
-          ATK_Percentage: [7.0, 14.9, 22.8, 30.8, 38.7, 46.6]
-          DEF_Percentage:      [8.7, 18.6, 28.6, 38.5, 48.4, 58.3]
-          PhysicalDamageBonus: [8.7, 18.6, 28.6, 38.5, 48.4, 58.3]
-          ElementalDamageBonus: [7.0, 14.9, 22.8, 30.8, 38.7, 46.6]
-          AnemoDamageBonus:   [7.0, 14.9, 22.8, 30.8, 38.7, 46.6]
-          GeoDamageBonus:     [7.0, 14.9, 22.8, 30.8, 38.7, 46.6]
-          ElectroDamageBonus: [7.0, 14.9, 22.8, 30.8, 38.7, 46.6]
-          DendroDamageBonus:  [7.0, 14.9, 22.8, 30.8, 38.7, 46.6]
-          HydroDamageBonus:   [7.0, 14.9, 22.8, 30.8, 38.7, 46.6]
-          PyroDamageBonus:    [7.0, 14.9, 22.8, 30.8, 38.7, 46.6]
-          CryoDamageBonus:    [7.0, 14.9, 22.8, 30.8, 38.7, 46.6]
-          Elemental_Mastery: [28.0, 59.7, 91.4, 123.1, 154.8, 186.5]
-          Energy_Recharge:   [7.8, 16.6, 25.4, 34.2, 43.0, 51.8]
-          CritRate:     [4.7,  9.9, 15.2, 20.5, 25.8, 31.1]
-          CritDamage:   [9.3, 19.9, 30.5, 41.0, 51.6, 62.2]
+          HP_FIXED:       [717, 1530, 2342, 3155, 3967, 4780]
+          ATK_FIXED:      [47, 100, 152, 205, 258, 311]
+          HP_PERCENTAGE:  [7.0, 14.9, 22.8, 30.8, 38.7, 46.6]
+          ATK_PERCENTAGE: [7.0, 14.9, 22.8, 30.8, 38.7, 46.6]
+          DEF_PERCENTAGE:      [8.7, 18.6, 28.6, 38.5, 48.4, 58.3]
+          PHYSICAL_DAMAGE_BONUS: [8.7, 18.6, 28.6, 38.5, 48.4, 58.3]
+          ANEMO_DAMAGE_BONUS:   [7.0, 14.9, 22.8, 30.8, 38.7, 46.6]
+          GEO_DAMAGE_BONUS:     [7.0, 14.9, 22.8, 30.8, 38.7, 46.6]
+          ELECTRO_DAMAGE_BONUS: [7.0, 14.9, 22.8, 30.8, 38.7, 46.6]
+          DENDRO_DAMAGE_BONUS:  [7.0, 14.9, 22.8, 30.8, 38.7, 46.6]
+          HYDRO_DAMAGE_BONUS:   [7.0, 14.9, 22.8, 30.8, 38.7, 46.6]
+          PYRO_DAMAGE_BONUS:    [7.0, 14.9, 22.8, 30.8, 38.7, 46.6]
+          CRYO_DAMAGE_BONUS:    [7.0, 14.9, 22.8, 30.8, 38.7, 46.6]
+          ELEMENTAL_MASTERY: [28.0, 59.7, 91.4, 123.1, 154.8, 186.5]
+          ENERGY_RECHARGE:   [7.8, 16.6, 25.4, 34.2, 43.0, 51.8]
+          CRIT_RATE:     [4.7,  9.9, 15.2, 20.5, 25.8, 31.1]
+          CRIT_DAMAGE:   [9.3, 19.9, 30.5, 41.0, 51.6, 62.2]
           HealingBonus: [5.4, 11.5, 17.6, 23.7, 29.8, 35.9]
+      substat:
+        5:
+          HP_FIXED: 298.75
+          ATK_FIXED: 19.45
+          DEF_FIXED: 23.15
+          HP_PERCENTAGE: 5.83
+          ATK_PERCENTAGE: 5.83
+          DEF_PERCENTAGE: 7.29
+          ENERGY_RECHARGE: 6.48
+          ELEMENTAL_MASTERY: 23.31
+          CRIT_RATE: 3.89
+          CRIT_DAMAGE: 7.77

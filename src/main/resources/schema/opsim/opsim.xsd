@@ -13,24 +13,25 @@
 
     <xs:simpleType name="StatType">
         <xs:restriction base="xs:string">
-            <xs:enumeration value="HP_Percentage"/>
-            <xs:enumeration value="HP_Fixed"/>
-            <xs:enumeration value="ATK_Percentage"/>
-            <xs:enumeration value="ATK_Fixed"/>
-            <xs:enumeration value="DEF_Percentage"/>
-            <xs:enumeration value="Elemental_Mastery"/>
-            <xs:enumeration value="Energy_Recharge"/>
-            <xs:enumeration value="PhysicalDamageBonus"/>
-            <xs:enumeration value="AnemoDamageBonus"/>
-            <xs:enumeration value="GeoDamageBonus"/>
-            <xs:enumeration value="ElectroDamageBonus"/>
-            <xs:enumeration value="DendroDamageBonus"/>
-            <xs:enumeration value="HydroDamageBonus"/>
-            <xs:enumeration value="PyroDamageBonus"/>
-            <xs:enumeration value="CryoDamageBonus"/>
-            <xs:enumeration value="CritRate"/>
-            <xs:enumeration value="CritDamage"/>
-            <xs:enumeration value="HealingBonus"/>
+            <xs:enumeration value="HP_PERCENTAGE"/>
+            <xs:enumeration value="HP_FIXED"/>
+            <xs:enumeration value="ATK_PERCENTAGE"/>
+            <xs:enumeration value="ATK_FIXED"/>
+            <xs:enumeration value="DEF_PERCENTAGE"/>
+            <xs:enumeration value="DEF_FIXED"/>
+            <xs:enumeration value="ELEMENTAL_MASTERY"/>
+            <xs:enumeration value="ENERGY_RECHARGE"/>
+            <xs:enumeration value="PHYSICAL_DAMAGE_BONUS"/>
+            <xs:enumeration value="ANEMO_DAMAGE_BONUS"/>
+            <xs:enumeration value="GEO_DAMAGE_BONUS"/>
+            <xs:enumeration value="ELECTRO_DAMAGE_BONUS"/>
+            <xs:enumeration value="DENDRO_DAMAGE_BONUS"/>
+            <xs:enumeration value="HYDRO_DAMAGE_BONUS"/>
+            <xs:enumeration value="PYRO_DAMAGE_BONUS"/>
+            <xs:enumeration value="CRYO_DAMAGE_BONUS"/>
+            <xs:enumeration value="CRIT_RATE"/>
+            <xs:enumeration value="CRIT_DAMAGE"/>
+            <xs:enumeration value="HEALING_BONUS"/>
         </xs:restriction> 
     </xs:simpleType>
 
@@ -48,6 +49,7 @@
             <xs:element name="type" type="ArtifactType"/>
             <xs:element name="level" type="xs:int"/>
             <xs:element name="mainStat" type="Stat"/>
+            <xs:element name="subStats" type="Stat" minOccurs="0" maxOccurs="unbounded"/>
         </xs:sequence>
     </xs:complexType>
 
