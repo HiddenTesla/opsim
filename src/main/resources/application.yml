@@ -1,3 +1,14 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://${holder.mysql.hostname}:3306/opsim?serverTimezone=UTC
+    username: root
+    password: root
+
+holder:
+  mysql:
+    hostname: localhost
+
 opsim:
   artifact:
     quantity:
