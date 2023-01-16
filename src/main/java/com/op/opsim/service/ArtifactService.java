@@ -13,7 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
@@ -88,10 +88,13 @@ public class ArtifactService {
         int n = random.nextInt(maxStatQuantity - minStatQuantity + 1) + minStatQuantity;
 
         List<Stat> subStats = artifact.getSubStats();
-        List<StatType> exclusion = Arrays.asList(artifact.getMainStat().getType());
+        List<StatType> exclusion = new ArrayList<>(n + 1);
+        exclusion.add(artifact.getMainStat().getType());
         for (int i = 0; i < n; i++) {
             Map<StatType, Double> s = subStatProbabilityAggregator.byRarityAndType(rarity, artifact.getType());
             StatType statType = statLottery.makeLottery(s, exclusion);
+            exclusion.add(statType);
+
             double statValue = subStatScalingAggregator.byRarityAndType(rarity, statType);
             statValue *= subStatRange[random.nextInt(subStatRange.length)];
 
