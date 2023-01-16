@@ -115,25 +115,53 @@ public class ArtifactService implements InitializingBean {
     }
 
     private void assignSubStat(Artifact artifact) {
-        int rarity = artifact.getRarity();
         int n = subStatQuantityLottery.makeLottery(quantitySubStatAggregator.getSubstat(), null);
 
         List<Stat> subStats = artifact.getSubStats();
-        List<StatType> exclusion = new ArrayList<>(n + 1);
-        exclusion.add(artifact.getMainStat().getType());
         for (int i = 0; i < n; i++) {
-            Map<StatType, Double> s = subStatProbabilityAggregator.byRarityAndType(rarity, artifact.getType());
-            StatType statType = statLottery.makeLottery(s, exclusion);
-            exclusion.add(statType);
-
-            double statValue = subStatScalingAggregator.byRarityAndType(rarity, statType);
-            statValue *= subStatRange[random.nextInt(subStatRange.length)];
-
-            Stat subStat = new Stat();
-            subStat.setType(statType);
-            subStat.setValue(statValue);
+            Stat subStat = generateNewSubStat(artifact);
             subStats.add(subStat);
         }
 
+    }
+
+    private Stat generateNewSubStat(Artifact artifact) {
+        int rarity = artifact.getRarity();
+        List<Stat> exsitingSubStats = artifact.getSubStats();
+        List<StatType> exclusion = new ArrayList<>(maxStatQuantity);
+        exclusion.add(artifact.getMainStat().getType());
+        for (Stat s: exsitingSubStats) {
+            exclusion.add(s.getType());
+        }
+
+        Map<StatType, Double> s = subStatProbabilityAggregator.byRarityAndType(rarity, artifact.getType());
+        StatType statType = statLottery.makeLottery(s, exclusion);
+
+        double statValue = subStatScalingAggregator.byRarityAndType(rarity, statType);
+        statValue *= subStatRange[random.nextInt(subStatRange.length)];
+
+        Stat subStat = new Stat();
+        subStat.setType(statType);
+        subStat.setValue(statValue);
+
+        return subStat;
+    }
+
+    public Stat enhance(Artifact artifact) {
+        List<Stat> subStats = artifact.getSubStats();
+        if (subStats.size() < maxStatQuantity) {
+            Stat newSubStat = generateNewSubStat(artifact);
+            subStats.add(newSubStat);
+            return newSubStat;
+        }
+        else {
+            int rarity = artifact.getRarity();
+            Stat enhancedSubStat = subStats.get(random.nextInt(subStats.size()));
+            StatType enhancedStatType = enhancedSubStat.getType();
+            double enhancedStatValue = subStatScalingAggregator.byRarityAndType(rarity, enhancedStatType);
+            enhancedStatValue *= subStatRange[random.nextInt(subStatRange.length)];
+            enhancedSubStat.setValue(enhancedSubStat.getValue() + enhancedStatValue);
+            return enhancedSubStat;
+        }
     }
 }

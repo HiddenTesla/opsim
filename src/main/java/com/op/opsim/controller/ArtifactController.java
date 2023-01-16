@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -41,6 +42,16 @@ public class ArtifactController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         else
             return new ResponseEntity<>(artifact, HttpStatus.OK);
+    }
+
+    @RequestMapping(path = "/{aid}/enhance", method = {RequestMethod.POST, RequestMethod.PUT, RequestMethod.PATCH})
+    public ResponseEntity<Object> enhanceArtifact(@PathVariable int aid) {
+        Artifact artifact = artifactDao.get(aid);
+        if (artifact == null)
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+
+        artifactService.enhance(artifact);
+        return new ResponseEntity<>(artifact, HttpStatus.OK);
     }
 
 }
