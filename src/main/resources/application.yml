@@ -11,12 +11,11 @@ holder:
 
 opsim:
   artifact:
-    quantity:
-      substat:
-        min: 3
-        max: 4
-
     probability:
+      quantity:
+        substat:
+          3: 80
+          4: 20
       mainstat:
         any: # Rarity
           flower:

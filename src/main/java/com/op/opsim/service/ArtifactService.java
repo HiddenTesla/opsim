@@ -5,29 +5,29 @@ import com.op.opsim.generated.ArtifactType;
 import com.op.opsim.generated.Stat;
 import com.op.opsim.generated.StatType;
 import com.op.opsim.model.arrgegator.MainStatScalingAggregator;
+import com.op.opsim.model.arrgegator.QuantitySubStatAggregator;
 import com.op.opsim.model.arrgegator.SubStatProbabilityAggregator;
 import com.op.opsim.model.arrgegator.SubStatScalingAggregator;
 import com.op.opsim.model.common.Lottery;
 import com.op.opsim.model.arrgegator.MainStatProbabilityAggregator;
+import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
+import java.util.Set;
 
 @Component
-public class ArtifactService {
+public class ArtifactService implements InitializingBean {
 
     final private Random random = new Random();
 
-    @Value("${opsim.artifact.quantity.substat.min}")
-    private int minStatQuantity;
+    private int minStatQuantity = 1;
 
-    @Value("${opsim.artifact.quantity.substat.max}")
-    private int maxStatQuantity;
+    private int maxStatQuantity = 1;
 
     // Todo: put this into configuration. Somehow not work.
     private Double[] subStatRange = {0.7, 0.8, 0.9, 1.0};
@@ -44,7 +44,38 @@ public class ArtifactService {
     @Autowired
     private SubStatScalingAggregator subStatScalingAggregator;
 
+    @Autowired
+    private QuantitySubStatAggregator quantitySubStatAggregator;
+
     final private Lottery<StatType, Double> statLottery = new Lottery<>();
+
+    final private Lottery<Integer, Double> subStatQuantityLottery = new Lottery<>();
+
+    @Override
+    public void afterPropertiesSet() {
+        setMinAndMaxStatQuantity();
+    }
+
+    private void setMinAndMaxStatQuantity() {
+        Map<Integer, Double> map =  quantitySubStatAggregator.getSubstat();
+        Set<Integer> keySet = map.keySet();
+        if (keySet.isEmpty())
+            return;
+
+        // Get an arbiary value from the map
+        for (Integer k: keySet) {
+            minStatQuantity = k;
+            maxStatQuantity = k;
+            break;
+        }
+
+        for (Integer k: keySet) {
+            if (k < minStatQuantity)
+                minStatQuantity = k;
+            if (k > maxStatQuantity)
+                maxStatQuantity = k;
+        }
+    }
 
     public Artifact createRandomTypeArtifact(int rarity) {
         ArtifactType artifactType = generateRandomArtifactType();
@@ -85,7 +116,7 @@ public class ArtifactService {
 
     private void assignSubStat(Artifact artifact) {
         int rarity = artifact.getRarity();
-        int n = random.nextInt(maxStatQuantity - minStatQuantity + 1) + minStatQuantity;
+        int n = subStatQuantityLottery.makeLottery(quantitySubStatAggregator.getSubstat(), null);
 
         List<Stat> subStats = artifact.getSubStats();
         List<StatType> exclusion = new ArrayList<>(n + 1);
