@@ -5,6 +5,9 @@ import com.op.opsim.generated.Stat;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Options;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Result;
+import org.apache.ibatis.annotations.Results;
+import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
 
@@ -30,4 +33,26 @@ public interface ArtifactMapper {
             "</script>"
     )
     void insertSubStat(@Param("artifactId") int artifactId, @Param("list") List<Stat> stats);
+
+
+    @Select(
+            "SELECT * FROM `artifact` WHERE `artifact_id` = #{artifactId} "
+    )
+    @Results(id = "artifact_main", value = {
+            @Result(property = "artifactId",     column = "artifact_id"),
+            @Result(property = "type",   column = "artifact_type"),
+            @Result(property = "mainStat.type",  column = "main_stat_type"),
+            @Result(property = "mainStat.value", column = "main_stat_value"),
+    })
+    Artifact findMain(@Param("artifactId") int artifactId);
+
+    @Select(
+            "SELECT * FROM sub_stat " +
+                "WHERE `artifact_id` = #{artifactId}"
+    )
+    @Results(id = "sub_stat", value = {
+            @Result(property = "type",  column = "sub_stat_type"),
+            @Result(property = "value", column = "sub_stat_value"),
+    })
+    List<Stat> findSubStats(@Param("artifactId") int artifactId);
 }
