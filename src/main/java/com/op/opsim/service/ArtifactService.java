@@ -160,7 +160,7 @@ public class ArtifactService implements InitializingBean {
             StatType enhancedStatType = enhancedSubStat.getType();
             double enhancedStatValue = subStatScalingAggregator.byRarityAndType(rarity, enhancedStatType);
             enhancedStatValue *= subStatRange[random.nextInt(subStatRange.length)];
-            enhancedSubStat.setValue(enhancedSubStat.getValue() + enhancedStatValue);
+            enhancedSubStat.setValue(enhancedStatValue);
             return enhancedSubStat;
         }
     }

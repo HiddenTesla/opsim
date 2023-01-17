@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -24,6 +25,10 @@ public class ArtifactDao {
         List<Stat> subStats = entity.getSubStats();
         if (subStats != null)
           artifactMapper.insertSubStat(artifactId, subStats);
+    }
+
+    public void insertSingleSubStat(int artifactId, Stat subStat) {
+        artifactMapper.insertSubStat(artifactId, Arrays.asList(subStat));
     }
 
     public Artifact get(int artifactId) {

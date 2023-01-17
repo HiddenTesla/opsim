@@ -2,6 +2,7 @@ package com.op.opsim.controller;
 
 import com.op.opsim.database.mysql.dao.ArtifactDao;
 import com.op.opsim.generated.Artifact;
+import com.op.opsim.generated.Stat;
 import com.op.opsim.service.ArtifactService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -50,7 +51,10 @@ public class ArtifactController {
         if (artifact == null)
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 
-        artifactService.enhance(artifact);
+        Stat newStat = artifactService.enhance(artifact);
+        artifactDao.insertSingleSubStat(aid, newStat);
+
+        artifact = artifactDao.get(aid);
         return new ResponseEntity<>(artifact, HttpStatus.OK);
     }
 

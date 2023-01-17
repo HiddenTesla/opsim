@@ -47,8 +47,9 @@ public interface ArtifactMapper {
     Artifact findMain(@Param("artifactId") int artifactId);
 
     @Select(
-            "SELECT * FROM sub_stat " +
-                "WHERE `artifact_id` = #{artifactId}"
+            "SELECT `artifact_id`, `sub_stat_type`, SUM(`sub_stat_value`) AS `sub_stat_value` FROM sub_stat " +
+                " WHERE `artifact_id` = #{artifactId} " +
+                " GROUP BY  `sub_stat_type`"
     )
     @Results(id = "sub_stat", value = {
             @Result(property = "type",  column = "sub_stat_type"),
