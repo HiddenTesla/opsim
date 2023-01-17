@@ -8,11 +8,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 @Service
-@Transactional
 public class ArtifactDao {
 
     @Autowired
@@ -27,6 +25,18 @@ public class ArtifactDao {
           artifactMapper.insertSubStat(artifactId, subStats);
     }
 
+    @Transactional
+    public void recordEnhance(Artifact artifact, Stat newSubStat) {
+        updateMainStat(artifact);
+        insertSingleSubStat(artifact.getArtifactId(), newSubStat);
+    }
+
+    @Transactional
+    public void updateMainStat(Artifact artifact) {
+        artifactMapper.updateMainStat(artifact);
+    }
+
+    @Transactional
     public void insertSingleSubStat(int artifactId, Stat subStat) {
         artifactMapper.insertSubStat(artifactId, Arrays.asList(subStat));
     }

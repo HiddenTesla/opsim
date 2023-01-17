@@ -8,6 +8,7 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import java.util.List;
 
@@ -34,6 +35,13 @@ public interface ArtifactMapper {
     )
     void insertSubStat(@Param("artifactId") int artifactId, @Param("list") List<Stat> stats);
 
+    @Update(
+            "UPDATE `artifact` SET " +
+                " `level` = #{level}," +
+                " `main_stat_value` = #{mainStat.value} " +
+                " WHERE `artifact_id` = #{artifactId} "
+    )
+    void updateMainStat(Artifact entity);
 
     @Select(
             "SELECT * FROM `artifact` WHERE `artifact_id` = #{artifactId} "

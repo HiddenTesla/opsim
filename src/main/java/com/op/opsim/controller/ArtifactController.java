@@ -4,6 +4,7 @@ import com.op.opsim.database.mysql.dao.ArtifactDao;
 import com.op.opsim.generated.Artifact;
 import com.op.opsim.generated.EnhanceResult;
 import com.op.opsim.generated.Stat;
+import com.op.opsim.model.exception.ArtifactEnhanceException;
 import com.op.opsim.service.ArtifactService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -52,15 +53,20 @@ public class ArtifactController {
         if (artifact == null)
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 
-        Stat newStat = artifactService.enhance(artifact);
-        artifactDao.insertSingleSubStat(aid, newStat);
+        try {
+            Stat newStat = artifactService.enhance(artifact);
+            artifactDao.recordEnhance(artifact, newStat);
 
-        artifact = artifactDao.get(aid);
+            artifact = artifactDao.get(aid);
 
-        EnhanceResult enhanceResult = new EnhanceResult();
-        enhanceResult.setEnhancedSubStat(newStat);
-        enhanceResult.setArtifact(artifact);
-        return new ResponseEntity<>(enhanceResult, HttpStatus.OK);
+            EnhanceResult enhanceResult = new EnhanceResult();
+            enhanceResult.setEnhancedSubStat(newStat);
+            enhanceResult.setArtifact(artifact);
+            return new ResponseEntity<>(enhanceResult, HttpStatus.OK);
+        }
+        catch (ArtifactEnhanceException e) {
+           return new ResponseEntity<>(e.getMessage(), HttpStatus.CONFLICT);
+        }
     }
 
 }

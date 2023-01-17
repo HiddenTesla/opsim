@@ -10,8 +10,10 @@ import com.op.opsim.model.arrgegator.SubStatProbabilityAggregator;
 import com.op.opsim.model.arrgegator.SubStatScalingAggregator;
 import com.op.opsim.model.common.Lottery;
 import com.op.opsim.model.arrgegator.MainStatProbabilityAggregator;
+import com.op.opsim.model.exception.ArtifactEnhanceException;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -31,6 +33,12 @@ public class ArtifactService implements InitializingBean {
 
     // Todo: put this into configuration. Somehow not work.
     private Double[] subStatRange = {0.7, 0.8, 0.9, 1.0};
+
+    @Value("${opsim.artifact.level.max}")
+    private Integer artifactMaxLevel;
+
+    @Value("${opsim.artifact.level.step}")
+    private Integer artifactEnhanceStep;
 
     @Autowired
     private MainStatProbabilityAggregator mainStatProbabilityAggregator;
@@ -148,6 +156,18 @@ public class ArtifactService implements InitializingBean {
     }
 
     public Stat enhance(Artifact artifact) {
+        int previousLevel = artifact.getLevel();
+        if (previousLevel >= artifactMaxLevel)
+            throw new ArtifactEnhanceException("Already reached max level " + artifactMaxLevel);
+        int newLevel = previousLevel + artifactEnhanceStep;
+        artifact.setLevel(newLevel);
+
+        Stat mainStat = artifact.getMainStat();
+        List<Double> mainStatScalar =
+                mainStatScalingAggregator.byRarityAndType(artifact.getRarity(), mainStat.getType());
+        double newMainStatValue = mainStatScalar.get(newLevel / artifactEnhanceStep);
+        mainStat.setValue(newMainStatValue);
+
         List<Stat> subStats = artifact.getSubStats();
         if (subStats.size() < maxStatQuantity) {
             Stat newSubStat = generateNewSubStat(artifact);
