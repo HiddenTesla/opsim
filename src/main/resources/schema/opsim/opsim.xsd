@@ -53,4 +53,11 @@
         </xs:sequence>
     </xs:complexType>
 
+    <xs:complexType name="EnhanceResult">
+        <xs:sequence>
+            <xs:element name="enhancedSubStat" type="Stat"/>
+            <xs:element name="artifact" type="Artifact"/>
+        </xs:sequence>
+    </xs:complexType>
+
 </xs:schema>

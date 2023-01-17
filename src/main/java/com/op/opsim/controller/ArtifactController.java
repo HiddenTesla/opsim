@@ -2,6 +2,7 @@ package com.op.opsim.controller;
 
 import com.op.opsim.database.mysql.dao.ArtifactDao;
 import com.op.opsim.generated.Artifact;
+import com.op.opsim.generated.EnhanceResult;
 import com.op.opsim.generated.Stat;
 import com.op.opsim.service.ArtifactService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -55,7 +56,11 @@ public class ArtifactController {
         artifactDao.insertSingleSubStat(aid, newStat);
 
         artifact = artifactDao.get(aid);
-        return new ResponseEntity<>(artifact, HttpStatus.OK);
+
+        EnhanceResult enhanceResult = new EnhanceResult();
+        enhanceResult.setEnhancedSubStat(newStat);
+        enhanceResult.setArtifact(artifact);
+        return new ResponseEntity<>(enhanceResult, HttpStatus.OK);
     }
 
 }
