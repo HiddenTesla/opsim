@@ -35,6 +35,12 @@ class Request {
     return response.json();
   }
 
+  static async getArtifact(aid: string): Promise<Artifact> {
+    let fullUrl = this.concatUrl("/artifact/" + aid, this.NO_PARAMETER);
+    let respJson = await this.callBackend(fullUrl, {method: "GET"});
+    return respJson as Artifact;
+  }
+
   static async createArtifact(): Promise<Artifact> {
     let fullUrl = this.concatUrl("/artifact", this.NO_PARAMETER);
     let respJson = await this.callBackend(fullUrl, {method: "POST"});

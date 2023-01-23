@@ -1,10 +1,14 @@
 import React from "react";
 import Create from "./Create";
+import Get from "./Get"
 
 const MainPage = (prop: any) => {
 
   return (
-    <Create></Create>
+    <div>
+      <Get/>
+      <Create/>
+    </div>
   )
 
 }
