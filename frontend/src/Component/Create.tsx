@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Input, Button} from "antd";
+import {Button} from "antd";
 import {Request} from "../Request";
 import {Artifact} from "../Model/Artifact";
 import {ArtifactRenderer} from "../Model/ArtifactRenderer";
@@ -23,7 +23,6 @@ class Create extends Component<Props, States> {
   render() {
     return (
       <div>
-        <Input></Input>
         <Button onClick={this.onButtonClick.bind(this)}>
           建一个新的遗物
         </Button>

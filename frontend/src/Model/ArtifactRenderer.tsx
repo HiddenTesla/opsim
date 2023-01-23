@@ -1,21 +1,23 @@
 import {Artifact, ArtifactType, Stat, StatType} from "./Artifact";
+import React, {ReactNode} from "react"
+import {Divider, List} from "antd";
 
 class ArtifactRenderer {
 
-  static render(artifact: Artifact) : string {
-    let SPLITTER = ", \n";
-    let ret = "";
-    ret += this.renderArtifactType(artifact.type);
-    ret += ("+" + artifact.level.toFixed());
-    ret += SPLITTER;
-    ret += this.renderStat(artifact.mainStat);
-
-    artifact.subStats.forEach((subStat) =>{
-      ret += SPLITTER;
-      ret += this.renderStat(subStat);
-    });
-
-    return ret;
+  static render(artifact: Artifact) : ReactNode {
+    return (
+      <div>
+        <p>{"编号：" + artifact.artifactId}</p>
+        <p>{this.renderArtifactType(artifact.type)}</p>
+        <p>{"等级：" + artifact.level.toFixed()}</p>
+        <p>{this.renderStat(artifact.mainStat)}</p>
+        <Divider/>
+        <List
+          dataSource={artifact.subStats}
+          renderItem={(stat) => <p>{this.renderStat(stat)}</p>}
+        />
+      </div>
+    );
   }
 
   static renderArtifactType(artifactType: ArtifactType) : string {
