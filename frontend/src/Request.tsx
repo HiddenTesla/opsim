@@ -47,6 +47,12 @@ class Request {
     return respJson as Artifact;
   }
 
+  static async enhanceArtifact(aid: string): Promise<Artifact> {
+    let fullUrl = this.concatUrl("/artifact/" + aid + "/enhance", this.NO_PARAMETER);
+    let respJson = await this.callBackend(fullUrl, {method: "POST"});
+    return respJson.artifact as Artifact;
+  }
+
 }
 
 export {Request};
