@@ -23,7 +23,7 @@ class Create extends Component<Props, States> {
   render() {
     return (
       <div>
-        <Button onClick={this.onButtonClick.bind(this)}>
+        <Button onClick={this.executeCreate.bind(this)}>
           建一个新的遗物
         </Button>
       <div>{ArtifactRenderer.render(this.state.artifact)}</div>
@@ -32,7 +32,7 @@ class Create extends Component<Props, States> {
   }
 
 
-  async onButtonClick() {
+  async executeCreate() {
     let resp = await Request.createArtifact()
     console.log(resp);
     this.setState({
