@@ -25,7 +25,9 @@ class Enhance extends Component<Props, States> {
   render() {
     return (
         <div>
-          <Input onChange={ (e) => {
+          <Input
+            onPressEnter={this.executeEnhance.bind(this)}
+            onChange={ (e) => {
             this.setState({
               inputText: e.target.value,
             })
@@ -33,7 +35,7 @@ class Enhance extends Component<Props, States> {
           </Input>
 
           <Button
-              onClick={this.onButtonClicked.bind(this)}
+              onClick={this.executeEnhance.bind(this)}
           >
             强化遗物
           </Button>
@@ -43,7 +45,7 @@ class Enhance extends Component<Props, States> {
     );
   }
 
-  async onButtonClicked() {
+  async executeEnhance() {
     let resp = await Request.enhanceArtifact(this.state.inputText);
     this.setState({artifact: resp});
   }

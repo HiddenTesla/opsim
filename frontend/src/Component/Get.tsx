@@ -27,7 +27,9 @@ class Get extends Component<Props, States> {
   render() {
     return(
       <div>
-        <Input onChange={ (e) => {
+        <Input
+          onPressEnter={this.executeGet.bind(this)}
+          onChange={ (e) => {
           this.setState({
             inputText: e.target.value,
           })
@@ -35,7 +37,7 @@ class Get extends Component<Props, States> {
         </Input>
 
         <Button
-          onClick={this.onButtonClicked.bind(this)}
+          onClick={this.executeGet.bind(this)}
         >
           查询遗物
         </Button>
@@ -46,7 +48,7 @@ class Get extends Component<Props, States> {
     );
   }
 
-  async onButtonClicked() {
+  async executeGet() {
     let resp = await Request.getArtifact(this.state.inputText);
     this.setState({artifact: resp});
   }
