@@ -4,3 +4,4 @@ Devlocal*.java
 *.jar
 *.tar
 *.war
+**node_modules/
