@@ -1,5 +1,6 @@
 package com.op.opsim.controller;
 
+import com.auth0.jwt.algorithms.Algorithm;
 import com.op.opsim.generated.AuthenticationError;
 import com.op.opsim.generated.LoginRequest;
 import com.op.opsim.generated.User;
@@ -53,7 +54,8 @@ public class AuthenticationController {
             return generateAuthenticateError(reason, HttpStatus.UNAUTHORIZED);
         }
 
-        return new ResponseEntity<>(HttpStatus.OK);
+        String jwt = userService.issueJwt(username);
+        return new ResponseEntity<>(jwt, HttpStatus.OK);
     }
 
     private ResponseEntity<AuthenticationError> generateAuthenticateError(String reason, HttpStatus httpStatus) {

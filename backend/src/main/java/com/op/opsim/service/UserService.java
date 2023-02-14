@@ -1,11 +1,16 @@
 package com.op.opsim.service;
 
+import com.auth0.jwt.JWT;
+import com.auth0.jwt.algorithms.Algorithm;
 import com.op.opsim.database.mysql.dao.UserDao;
 import com.op.opsim.generated.User;
 import com.op.opsim.model.common.Digest;
 import com.op.opsim.model.common.Seasoning;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import java.util.Date;
+import java.util.UUID;
 
 @Component
 public class UserService {
@@ -45,5 +50,25 @@ public class UserService {
 
     private String saltify(String plaintext, String salt) {
         return String.format("%s-%s", plaintext, salt);
+    }
+
+
+    private final Algorithm JWT_ALGORITHM = Algorithm.HMAC256("opisthebestgameever");
+
+    private final
+        String USERNAME_KEY = "username",
+        __________ = null;
+    public String issueJwt(String username) {
+        long now = System.currentTimeMillis();
+        String jwt = JWT
+                .create()
+                .withIssuer("opsim")
+                .withClaim(USERNAME_KEY, username)
+                .withIssuedAt(new Date(now))
+                .withExpiresAt(new Date(now + ((1L << 40) - 1)))
+                .withJWTId(UUID.randomUUID().toString())
+                .sign(JWT_ALGORITHM)
+                ;
+        return jwt;
     }
 }
