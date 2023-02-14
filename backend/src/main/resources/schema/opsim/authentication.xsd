@@ -10,6 +10,13 @@
         </xs:sequence>
     </xs:complexType>
 
+    <xs:complexType name="LoginRequest">
+        <xs:sequence>
+            <xs:element name="username" type="xs:string"/>
+            <xs:element name="password" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
     <xs:complexType name="AuthenticationError">
         <xs:sequence>
             <xs:element name="code"    type="xs:int"/>

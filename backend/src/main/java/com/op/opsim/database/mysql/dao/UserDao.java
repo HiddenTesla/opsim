@@ -14,5 +14,10 @@ public class UserDao {
     public void createUser(User user) {
         userMapper.createUser(user);
     }
+    
+    public User findUser(String username) {
+        User user = userMapper.findUser(username);
+        return user;
+    }
 
 }

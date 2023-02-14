@@ -28,6 +28,21 @@ public class UserService {
         return user;
     }
 
+    public User findUser(String username, String plainPassword) {
+        User user = userDao.findUser(username);
+        if (user == null)
+            return null;
+
+        String salt = user.getSalt();
+        String saltyPassword = saltify(plainPassword, salt);
+        String digestPassword = Digest.sha1sum(saltyPassword);
+
+        if (!digestPassword.equals(user.getPassword()))
+            return null;
+
+        return user;
+    }
+
     private String saltify(String plaintext, String salt) {
         return String.format("%s-%s", plaintext, salt);
     }
