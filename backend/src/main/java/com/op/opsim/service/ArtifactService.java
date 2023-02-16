@@ -1,7 +1,9 @@
 package com.op.opsim.service;
 
+import com.op.opsim.database.mysql.dao.ArtifactDao;
 import com.op.opsim.generated.Artifact;
 import com.op.opsim.generated.ArtifactType;
+import com.op.opsim.generated.EnhanceResult;
 import com.op.opsim.generated.Stat;
 import com.op.opsim.generated.StatType;
 import com.op.opsim.model.arrgegator.MainStatScalingAggregator;
@@ -55,6 +57,9 @@ public class ArtifactService implements InitializingBean {
     @Autowired
     private QuantitySubStatAggregator quantitySubStatAggregator;
 
+    @Autowired
+    private ArtifactDao artifactDao;
+
     final private Lottery<StatType, Double> statLottery = new Lottery<>();
 
     final private Lottery<Integer, Double> subStatQuantityLottery = new Lottery<>();
@@ -91,6 +96,7 @@ public class ArtifactService implements InitializingBean {
         return artifact;
     }
 
+    // Todo: put dao in this class for create and enhance
     public Artifact createGivenTypeArtifact(int rarity, ArtifactType artifactType) {
         Artifact artifact = new Artifact();
         artifact.setArtifactId(-1);
@@ -183,5 +189,22 @@ public class ArtifactService implements InitializingBean {
             enhancedSubStat.setValue(enhancedStatValue);
             return enhancedSubStat;
         }
+    }
+
+    public EnhanceResult rewind(Artifact artifact) {
+        int previousLevel = artifact.getLevel();
+        if (previousLevel < artifactEnhanceStep)
+            throw new ArtifactEnhanceException("Level too low: " + previousLevel);
+        int newLevel = previousLevel - artifactEnhanceStep;
+        artifact.setLevel(newLevel);
+
+        Stat mainStat = artifact.getMainStat();
+        List<Double> mainStatScalar =
+                mainStatScalingAggregator.byRarityAndType(artifact.getRarity(), mainStat.getType());
+        double newMainStatValue = mainStatScalar.get(newLevel / artifactEnhanceStep);
+        mainStat.setValue(newMainStatValue);
+
+        EnhanceResult rewindResult = artifactDao.rewind(artifact);
+        return rewindResult;
     }
 }

@@ -2,10 +2,12 @@ package com.op.opsim.database.mysql.mapper;
 
 import com.op.opsim.generated.Artifact;
 import com.op.opsim.generated.Stat;
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Options;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Result;
+import org.apache.ibatis.annotations.ResultMap;
 import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
@@ -64,4 +66,42 @@ public interface ArtifactMapper {
             @Result(property = "value", column = "sub_stat_value"),
     })
     List<Stat> findSubStats(@Param("artifactId") int artifactId);
+
+
+    @Options(keyColumn = "sub_stat_id")
+    @Select(
+            "SELECT `sub_stat_id` , `artifact_id`, `sub_stat_type`,  `sub_stat_value` FROM sub_stat " +
+                " WHERE `artifact_id` = #{artifactId} " +
+                " ORDER BY `sub_stat_id` " +
+                " DESC LIMIT 1  "
+    )
+    int findNewestSubStat(@Param("artifactId") int artifactId);
+
+
+    String SUB_STAT_COLUMNS =
+        " `sub_stat_id`, `artifact_id`, `sub_stat_type`,  `sub_stat_value`, `create_date` " ;
+
+    @Insert(
+            "INSERT INTO rewind_sub_stat " +
+                "(" + SUB_STAT_COLUMNS + ") " +
+                " SELECT " +
+                SUB_STAT_COLUMNS +
+                " FROM sub_stat WHERE sub_stat_id = #{subStatId} "
+    )
+    void copySubStat(@Param("subStatId") int subStatId);
+
+    @Delete(
+            "DELETE FROM sub_stat " +
+                "WHERE sub_stat_id = #{subStatId} "
+    )
+    void deleteSubStat(@Param("subStatId") int subStatId);
+
+    // MyBatis sucks as in CUD it can only return the quantity, not the object.
+    @ResultMap("sub_stat")
+    @Select(
+            "SELECT * FROM rewind_sub_stat " +
+                "WHERE sub_stat_id = #{subStatId} "
+    )
+    Stat findRewindSubStat(@Param("subStatId") int subStatId);
+
 }

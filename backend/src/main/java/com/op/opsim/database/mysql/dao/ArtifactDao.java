@@ -2,6 +2,7 @@ package com.op.opsim.database.mysql.dao;
 
 import com.op.opsim.database.mysql.mapper.ArtifactMapper;
 import com.op.opsim.generated.Artifact;
+import com.op.opsim.generated.EnhanceResult;
 import com.op.opsim.generated.Stat;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -53,5 +54,23 @@ public class ArtifactDao {
             returnedSubStats.addAll(storedSubStats);
 
         return artifact;
+    }
+
+    @Transactional
+    public EnhanceResult rewind(Artifact artifact) {
+        updateMainStat(artifact);
+        int artifactId = artifact.getArtifactId();
+        int newestSubStatId = artifactMapper.findNewestSubStat(artifactId);
+        artifactMapper.copySubStat(newestSubStatId);
+        artifactMapper.deleteSubStat(newestSubStatId);
+
+        Artifact rewoundArtifact = this.get(artifactId);
+        Stat rewoundSubStat = artifactMapper.findRewindSubStat(newestSubStatId);
+
+        EnhanceResult rewindResult = new EnhanceResult();
+        rewindResult.setArtifact(rewoundArtifact);
+        rewindResult.setEnhancedSubStat(rewoundSubStat);
+
+        return rewindResult;
     }
 }

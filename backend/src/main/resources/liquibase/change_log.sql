@@ -7,6 +7,7 @@ CREATE  TABLE  IF NOT EXISTS `artifact` (
     `artifact_type`    VARCHAR(128),
     `main_stat_type`   VARCHAR(256),
     `main_stat_value`  FLOAT(32),
+    `create_date`      DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     PRIMARY KEY(`artifact_id`)
 )
 ENGINE = InnoDB DEFAULT CHARSET = UTF8MB4;
@@ -15,7 +16,20 @@ CREATE  TABLE  IF NOT EXISTS `sub_stat` (
     `sub_stat_id`      INT NOT NULL AUTO_INCREMENT,
     `artifact_id`      INT,
     `sub_stat_type`    VARCHAR(256),
-    `sub_stat_value`  FLOAT(32),
+    `sub_stat_value`   FLOAT(32),
+    `create_date`      DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     PRIMARY KEY(`sub_stat_id`)
 )
 ENGINE = InnoDB DEFAULT CHARSET = UTF8MB4;
+
+CREATE  TABLE  IF NOT EXISTS `rewind_sub_stat` (
+    `sub_stat_id`      INT NOT NULL AUTO_INCREMENT,
+    `artifact_id`      INT,
+    `sub_stat_type`    VARCHAR(256),
+    `sub_stat_value`   FLOAT(32),
+    `create_date`      DATETIME,
+    `rewind_date`      DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    PRIMARY KEY(`sub_stat_id`)
+)
+ENGINE = InnoDB DEFAULT CHARSET = UTF8MB4;
+

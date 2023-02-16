@@ -69,4 +69,18 @@ public class ArtifactController {
         }
     }
 
+    @RequestMapping(path = "/{aid}/rewind", method = {RequestMethod.POST, RequestMethod.PUT, RequestMethod.PATCH})
+    public ResponseEntity<Object> rewindArtifact(@PathVariable int aid) {
+        Artifact artifact = artifactDao.get(aid);
+        if (artifact == null)
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+
+        try {
+            EnhanceResult rewindResult = artifactService.rewind(artifact);
+            return new ResponseEntity<>(rewindResult, HttpStatus.OK);
+        }
+        catch (ArtifactEnhanceException e) {
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.CONFLICT);
+        }
+    }
 }
