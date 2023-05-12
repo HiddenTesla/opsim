@@ -1,7 +1,9 @@
 package com.op.opsim.service;
 
 import com.op.opsim.database.mysql.dao.GachaDao;
+import com.op.opsim.generated.Character;
 import com.op.opsim.generated.Gacha;
+import com.op.opsim.generated.GachaType;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -14,8 +16,8 @@ import java.util.Random;
 public class GachaService implements InitializingBean {
     private Random random = new Random();
 
-//    @Value("${opsim.gacha.weight}")
-    private Integer gachaMaxWeight;
+    @Value("${opsim.gacha.weight}")
+    private Double gachaWeight = 0.02;
 
     @Autowired
     private GachaDao gachaDao;
@@ -27,10 +29,10 @@ public class GachaService implements InitializingBean {
 
     public Gacha singleWish() {
         Gacha gacha = new Gacha();
-
-
-
-
+        gacha.setGachaId(114514);
+        gacha.setRarity(5);
+        gacha.setType(GachaType.CHARACTER);
+        gacha.setName("qiqi");
         return gacha;
     }
 
