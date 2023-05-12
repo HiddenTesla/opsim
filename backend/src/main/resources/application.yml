@@ -100,3 +100,5 @@ opsim:
           ELEMENTAL_MASTERY: 23.31
           CRIT_RATE: 3.89
           CRIT_DAMAGE: 7.77
+  gacha:
+    weight: 0.02

@@ -97,11 +97,11 @@
 
     <xs:simpleType name="WeaponType">
         <xs:restriction base="xs:string">
-            <xs:enumeration value="Sword" />
-            <xs:enumeration value="Spear" />
-            <xs:enumeration value="Blade" />
-            <xs:enumeration value="Bow" />
-            <xs:enumeration value="Book" />
+            <xs:enumeration value="Swords" />
+            <xs:enumeration value="Polearms" />
+            <xs:enumeration value="Claymore" />
+            <xs:enumeration value="Bows" />
+            <xs:enumeration value="Catalysts" />
         </xs:restriction>
     </xs:simpleType>
 

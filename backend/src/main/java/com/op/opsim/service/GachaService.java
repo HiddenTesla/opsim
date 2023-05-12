@@ -12,15 +12,13 @@ import java.util.Random;
 
 @Component
 public class GachaService implements InitializingBean {
-    final private Random random = new Random();
+    private Random random = new Random();
 
-    @Value("${opsim.gacha.weight}")
+//    @Value("${opsim.gacha.weight}")
     private Integer gachaMaxWeight;
 
     @Autowired
     private GachaDao gachaDao;
-
-    private Integer batchSize = 10;
 
     @Override
     public void afterPropertiesSet() throws Exception {
@@ -29,13 +27,19 @@ public class GachaService implements InitializingBean {
 
     public Gacha singleWish() {
         Gacha gacha = new Gacha();
+
+
+
+
         return gacha;
     }
 
     public ArrayList<Gacha> batchWish() {
-        Gacha gacha = new Gacha();
         ArrayList<Gacha> results = new ArrayList<>();
-        results.add(gacha);
+        Integer batchSize = 10;
+        for(int i = 0; i< batchSize; i++){
+            results.add(singleWish());
+        }
         return results;
     }
 }
