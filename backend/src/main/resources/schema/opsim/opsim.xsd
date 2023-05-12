@@ -60,4 +60,60 @@
         </xs:sequence>
     </xs:complexType>
 
+    <xs:complexType name="Gacha">
+        <xs:sequence>
+            <xs:element name="gachaId" type="xs:int" />
+            <xs:element name="rarity" type="xs:int" />
+            <xs:element name="type" type="GachaType" />
+            <xs:element name="name" type="xs:string" />
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:simpleType name="GachaType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Character"/>
+            <xs:enumeration value="Weapon" />
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name="Character">
+        <xs:sequence>
+            <xs:element name="characterId" type="xs:int" />
+            <xs:element name="rarity" type="xs:int" />
+            <xs:element name="weapon" type="WeaponType" />
+            <xs:element name="element" type="elementType" />
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="Weapon">
+       <xs:sequence>
+           <xs:element name="weaponId" type="xs:int" />
+           <xs:element name="rarity" type="xs:int" />
+           <xs:element name="weaponType" type="WeaponType" />
+           <xs:element name="atk" type="xs:int" />
+           <xs:element name="stat" type="Stat" />
+       </xs:sequence>
+    </xs:complexType>
+
+    <xs:simpleType name="WeaponType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Sword" />
+            <xs:enumeration value="Spear" />
+            <xs:enumeration value="Blade" />
+            <xs:enumeration value="Bow" />
+            <xs:enumeration value="Book" />
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="elementType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Pyro" />
+            <xs:enumeration value="Hydro" />
+            <xs:enumeration value="Anemo" />
+            <xs:enumeration value="Electro" />
+            <xs:enumeration value="Dendro" />
+            <xs:enumeration value="Cryo" />
+            <xs:enumeration value="Geo" />
+        </xs:restriction>
+    </xs:simpleType>
 </xs:schema>
