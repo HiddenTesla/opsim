@@ -60,4 +60,12 @@
         </xs:sequence>
     </xs:complexType>
 
+    <xs:complexType name="ItemUntilResult">
+        <xs:sequence>
+            <xs:element name="target" type="xs:int"/>
+            <xs:element name="size" type="xs:int"/>
+            <xs:element name="sequence" type="xs:int" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
 </xs:schema>
