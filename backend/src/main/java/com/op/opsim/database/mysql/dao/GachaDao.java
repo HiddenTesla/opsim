@@ -12,6 +12,5 @@ public class GachaDao {
 
     public void insert(Gacha entity) {
         gachaMapper.insertMain(entity);
-        int gachaId = entity.getGachaId();
     }
 }
