@@ -101,5 +101,7 @@ opsim:
           CRIT_RATE: 3.89
           CRIT_DAMAGE: 7.77
   gacha:
-    weight: 0.006
+    weight:
+      5: 0.0060
+      4: 0.0255
     pity: 90
