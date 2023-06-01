@@ -77,3 +77,9 @@ VALUES ("Kaeya", "4", "Swords", "Pyro");
 
 INSERT INTO `character` (`character_name`, `rarity`, `weapon_type`, `element_type`)
 VALUES ("Lisa", "4", "Catalysts", "Electro");
+
+INSERT INTO `character` (`character_name`, `rarity`, `weapon_type`, `element_type`)
+VALUES ("Yoimiya", "5", "Bows", "Pyro");
+
+INSERT INTO `character` (`character_name`, `rarity`, `weapon_type`, `element_type`)
+VALUES ("Yae Miko", "5", "Catalysts", "Electro");
