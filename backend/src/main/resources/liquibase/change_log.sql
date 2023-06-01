@@ -33,3 +33,47 @@ CREATE  TABLE  IF NOT EXISTS `rewind_sub_stat` (
 )
 ENGINE = InnoDB DEFAULT CHARSET = UTF8MB4;
 
+CREATE TABLE IF NOT EXISTS `character` (
+    `character_id`      INT NOT NULL AUTO_INCREMENT,
+    `character_name`    VARCHAR(256),
+    `rarity`            INT,
+    `weapon_type`       VARCHAR(256),
+    `element_type`      VARCHAR(256),
+)
+ENGINE = InnoDB DEFAULT CHARSET = UTF8MB4;
+
+CREATE TABLE IF NOT EXISTS `gacha` (
+    `gacha_id`  INT NOT NULL AUTO_INCREMENT,
+    `rarity`    INT,
+    `type`      VARCHAR(256),
+    `item_id`   INT,
+    `gacha_date` DATETIME
+)
+ENGINE = InnoDB DEFAULT CHARSET = UTF8MB4;
+
+INSERT INTO `character` (`character_name`, `rarity`, `weapon_type`, `element_type`)
+VALUES ("Qiqi", "5", "Swords", "Cryo");
+
+INSERT INTO `character` (`character_name`, `rarity`, `weapon_type`, `element_type`)
+VALUES ("Keqing", "5", "Swords", "Electro");
+
+INSERT INTO `character` (`character_name`, `rarity`, `weapon_type`, `element_type`)
+VALUES ("Mona", "5", "Catalysts", "Hydro");
+
+INSERT INTO `character` (`character_name`, `rarity`, `weapon_type`, `element_type`)
+VALUES ("Jean", "5", "Swords", "Anemo");
+
+INSERT INTO `character` (`character_name`, `rarity`, `weapon_type`, `element_type`)
+VALUES ("Diluc", "5", "Claymores", "Pyro");
+
+INSERT INTO `character` (`character_name`, `rarity`, `weapon_type`, `element_type`)
+VALUES ("Amber", "4", "Bows", "Pyro");
+
+INSERT INTO `character` (`character_name`, `rarity`, `weapon_type`, `element_type`)
+VALUES ("Babara", "4", "Catalysts", "Hydro");
+
+INSERT INTO `character` (`character_name`, `rarity`, `weapon_type`, `element_type`)
+VALUES ("Kaeya", "4", "Swords", "Pyro");
+
+INSERT INTO `character` (`character_name`, `rarity`, `weapon_type`, `element_type`)
+VALUES ("Lisa", "4", "Catalysts", "Electro");
