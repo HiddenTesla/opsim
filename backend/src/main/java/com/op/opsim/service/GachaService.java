@@ -95,7 +95,7 @@ public class GachaService implements InitializingBean {
         gacha.setGachaId(0);
         gacha.setRarity(character.getRarity());
         gacha.setType(GachaType.CHARACTER);
-        gacha.setName(character.getCharacterName());
+        gacha.setItemId(character.getCharacterId());
         gachaDao.insert(gacha);
         return gacha;
     }
