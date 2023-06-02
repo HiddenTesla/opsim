@@ -39,6 +39,7 @@ CREATE TABLE IF NOT EXISTS `character` (
     `rarity`            INT,
     `weapon_type`       VARCHAR(256),
     `element_type`      VARCHAR(256),
+    PRIMARY KEY(`character_id`)
 )
 ENGINE = InnoDB DEFAULT CHARSET = UTF8MB4;
 
@@ -47,7 +48,8 @@ CREATE TABLE IF NOT EXISTS `gacha` (
     `rarity`    INT,
     `type`      VARCHAR(256),
     `item_id`   INT,
-    `gacha_date` DATETIME
+    `gacha_date` DATETIME,
+    PRIMARY KEY(`gacha_id`)
 )
 ENGINE = InnoDB DEFAULT CHARSET = UTF8MB4;
 

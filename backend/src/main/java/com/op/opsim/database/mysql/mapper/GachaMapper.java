@@ -7,9 +7,9 @@ import org.apache.ibatis.annotations.Options;
 public interface GachaMapper {
     @Insert(
             "INSERT INTO `gacha` " +
-                    "(`rarity`, `gacha_type`, `name`)" +
+                    "(`rarity`, `type`, `item_id`)" +
                     " VALUES " +
-                    "(#{rarity}, #{type}, #{name}) "
+                    "(#{rarity}, #{type}, #{itemId}) "
     )
     @Options(keyProperty = "gachaId", keyColumn = "gacha_id", useGeneratedKeys = true)
     void insertMain(Gacha entity);

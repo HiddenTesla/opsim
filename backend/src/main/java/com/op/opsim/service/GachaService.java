@@ -3,6 +3,7 @@ package com.op.opsim.service;
 import com.op.opsim.database.mysql.dao.GachaDao;
 import com.op.opsim.generated.*;
 import com.op.opsim.generated.Character;
+import jdk.jfr.internal.Logger;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -91,8 +92,6 @@ public class GachaService implements InitializingBean {
         }
 
         assert character != null;
-        //TODO: get auto increment id from db
-        gacha.setGachaId(0);
         gacha.setRarity(character.getRarity());
         gacha.setType(GachaType.CHARACTER);
         gacha.setItemId(character.getCharacterId());
