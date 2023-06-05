@@ -81,8 +81,8 @@
             <xs:element name="characterId" type="xs:int" />
             <xs:element name="characterName" type="xs:string" />
             <xs:element name="rarity" type="xs:int" />
-            <xs:element name="weapon" type="WeaponType" />
-            <xs:element name="element" type="elementType" />
+            <xs:element name="weaponType" type="WeaponType" />
+            <xs:element name="elementType" type="elementType" />
         </xs:sequence>
     </xs:complexType>
 
@@ -99,23 +99,23 @@
 
     <xs:simpleType name="WeaponType">
         <xs:restriction base="xs:string">
-            <xs:enumeration value="Swords" />
-            <xs:enumeration value="Polearms" />
-            <xs:enumeration value="Claymores" />
-            <xs:enumeration value="Bows" />
-            <xs:enumeration value="Catalysts" />
+            <xs:enumeration value="SWORDS" />
+            <xs:enumeration value="POLEARMS" />
+            <xs:enumeration value="CLAYMORES" />
+            <xs:enumeration value="BOWS" />
+            <xs:enumeration value="CATALYSTS" />
         </xs:restriction>
     </xs:simpleType>
 
     <xs:simpleType name="elementType">
         <xs:restriction base="xs:string">
-            <xs:enumeration value="Pyro" />
-            <xs:enumeration value="Hydro" />
-            <xs:enumeration value="Anemo" />
-            <xs:enumeration value="Electro" />
-            <xs:enumeration value="Dendro" />
-            <xs:enumeration value="Cryo" />
-            <xs:enumeration value="Geo" />
+            <xs:enumeration value="PYRO" />
+            <xs:enumeration value="HYDRO" />
+            <xs:enumeration value="ANEMO" />
+            <xs:enumeration value="ELECTRO" />
+            <xs:enumeration value="DENDRO" />
+            <xs:enumeration value="CRYO" />
+            <xs:enumeration value="GEO" />
         </xs:restriction>
     </xs:simpleType>
 </xs:schema>

@@ -54,34 +54,34 @@ CREATE TABLE IF NOT EXISTS `gacha` (
 ENGINE = InnoDB DEFAULT CHARSET = UTF8MB4;
 
 INSERT INTO `character` (`character_name`, `rarity`, `weapon_type`, `element_type`)
-VALUES ("Qiqi", "5", "Swords", "Cryo");
+VALUES ("Qiqi", "5", "SWORDS", "CRYO");
 
 INSERT INTO `character` (`character_name`, `rarity`, `weapon_type`, `element_type`)
-VALUES ("Keqing", "5", "Swords", "Electro");
+VALUES ("Keqing", "5", "SWORDS", "ELECTRO");
 
 INSERT INTO `character` (`character_name`, `rarity`, `weapon_type`, `element_type`)
-VALUES ("Mona", "5", "Catalysts", "Hydro");
+VALUES ("Mona", "5", "CATALYSTS", "HYDRO");
 
 INSERT INTO `character` (`character_name`, `rarity`, `weapon_type`, `element_type`)
-VALUES ("Jean", "5", "Swords", "Anemo");
+VALUES ("Jean", "5", "SWORDS", "ANEMO");
 
 INSERT INTO `character` (`character_name`, `rarity`, `weapon_type`, `element_type`)
-VALUES ("Diluc", "5", "Claymores", "Pyro");
+VALUES ("Diluc", "5", "CLAYMORES", "PYRO");
 
 INSERT INTO `character` (`character_name`, `rarity`, `weapon_type`, `element_type`)
-VALUES ("Amber", "4", "Bows", "Pyro");
+VALUES ("Amber", "4", "BOWS", "PYRO");
 
 INSERT INTO `character` (`character_name`, `rarity`, `weapon_type`, `element_type`)
-VALUES ("Babara", "4", "Catalysts", "Hydro");
+VALUES ("Babara", "4", "CATALYSTS", "HYDRO");
 
 INSERT INTO `character` (`character_name`, `rarity`, `weapon_type`, `element_type`)
-VALUES ("Kaeya", "4", "Swords", "Pyro");
+VALUES ("Kaeya", "4", "SWORDS", "PYRO");
 
 INSERT INTO `character` (`character_name`, `rarity`, `weapon_type`, `element_type`)
-VALUES ("Lisa", "4", "Catalysts", "Electro");
+VALUES ("Lisa", "4", "CATALYSTS", "ELECTRO");
 
 INSERT INTO `character` (`character_name`, `rarity`, `weapon_type`, `element_type`)
-VALUES ("Yoimiya", "5", "Bows", "Pyro");
+VALUES ("Yoimiya", "5", "BOWS", "PYRO");
 
 INSERT INTO `character` (`character_name`, `rarity`, `weapon_type`, `element_type`)
-VALUES ("Yae Miko", "5", "Catalysts", "Electro");
+VALUES ("Yae Miko", "5", "CATALYSTS", "ELECTRO");
