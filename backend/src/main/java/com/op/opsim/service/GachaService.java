@@ -43,7 +43,9 @@ public class GachaService implements InitializingBean {
     private boolean fiveStarPityTriggered = false;
 
     @Override
-    public void afterPropertiesSet() throws Exception {}
+    public void afterPropertiesSet() throws Exception {
+        updatePool();
+    }
 
     private void updatePool() {
         //TODO: get current pool from db
@@ -128,8 +130,8 @@ public class GachaService implements InitializingBean {
     private Character getBasicItem() {
         Character basicItem = new Character();
         basicItem.setRarity(3);
-        basicItem.setElement(ElementType.PYRO);
-        basicItem.setWeapon(WeaponType.SWORDS);
+        basicItem.setElementType(ElementType.PYRO);
+        basicItem.setWeaponType(WeaponType.SWORDS);
         basicItem.setCharacterId(114514);
         basicItem.setCharacterName("Kouji");
         return basicItem;
