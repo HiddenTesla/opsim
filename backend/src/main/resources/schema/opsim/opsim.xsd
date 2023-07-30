@@ -64,6 +64,7 @@
         <xs:sequence>
             <xs:element name="gachaId" type="xs:int" />
             <xs:element name="itemId" type="xs:int" />
+            <xs:element name="itemName" type="xs:string" />
             <xs:element name="rarity" type="xs:int" />
             <xs:element name="type" type="GachaType" />
         </xs:sequence>

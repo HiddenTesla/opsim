@@ -92,10 +92,12 @@ public class GachaService implements InitializingBean {
             greatPity = !greatPity;
         }
 
+        //TODO: add character name into result
         assert character != null;
         gacha.setRarity(character.getRarity());
         gacha.setType(GachaType.CHARACTER);
         gacha.setItemId(character.getCharacterId());
+        gacha.setItemName(character.getCharacterName());
         gachaDao.insert(gacha);
         return gacha;
     }
