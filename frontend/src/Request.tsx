@@ -53,6 +53,12 @@ class Request {
     return respJson.artifact as Artifact;
   }
 
+  static async rewindArtifact(aid: string): Promise<Artifact> {
+    let fullUrl = this.concatUrl("/artifact/" + aid + "/rewind", this.NO_PARAMETER);
+    let respJson = await this.callBackend(fullUrl, {method: "POST"});
+    return respJson.artifact as Artifact;
+  }
+
 }
 
 export {Request};

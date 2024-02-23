@@ -2,6 +2,7 @@ import React from "react";
 import Create from "./Create";
 import Get from "./Get"
 import Enhance from "./Enhance";
+import Rewind from "./Rewind";
 
 const MainPage = (prop: any) => {
 
@@ -10,6 +11,7 @@ const MainPage = (prop: any) => {
       <Get/>
       <Create/>
       <Enhance/>
+      <Rewind/>
     </div>
   )
 
