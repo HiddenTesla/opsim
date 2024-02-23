@@ -68,21 +68,27 @@ opsim:
             CRIT_DAMAGE: 7.50
 
     scaling:
+      template:
+        value7: &value7
+          [7.0, 14.9, 22.8, 30.8, 38.7, 46.6]
+        value8.7: &value8.7
+          [8.7, 18.6, 28.6, 38.5, 48.4, 58.3]
+
       mainstat:
         5:
           HP_FIXED:       [717, 1530, 2342, 3155, 3967, 4780]
           ATK_FIXED:      [47, 100, 152, 205, 258, 311]
-          HP_PERCENTAGE:  [7.0, 14.9, 22.8, 30.8, 38.7, 46.6]
-          ATK_PERCENTAGE: [7.0, 14.9, 22.8, 30.8, 38.7, 46.6]
-          DEF_PERCENTAGE:      [8.7, 18.6, 28.6, 38.5, 48.4, 58.3]
-          PHYSICAL_DAMAGE_BONUS: [8.7, 18.6, 28.6, 38.5, 48.4, 58.3]
-          ANEMO_DAMAGE_BONUS:   [7.0, 14.9, 22.8, 30.8, 38.7, 46.6]
-          GEO_DAMAGE_BONUS:     [7.0, 14.9, 22.8, 30.8, 38.7, 46.6]
-          ELECTRO_DAMAGE_BONUS: [7.0, 14.9, 22.8, 30.8, 38.7, 46.6]
-          DENDRO_DAMAGE_BONUS:  [7.0, 14.9, 22.8, 30.8, 38.7, 46.6]
-          HYDRO_DAMAGE_BONUS:   [7.0, 14.9, 22.8, 30.8, 38.7, 46.6]
-          PYRO_DAMAGE_BONUS:    [7.0, 14.9, 22.8, 30.8, 38.7, 46.6]
-          CRYO_DAMAGE_BONUS:    [7.0, 14.9, 22.8, 30.8, 38.7, 46.6]
+          HP_PERCENTAGE:  *value7
+          ATK_PERCENTAGE: *value7
+          DEF_PERCENTAGE:        *value8.7
+          PHYSICAL_DAMAGE_BONUS: *value8.7
+          ANEMO_DAMAGE_BONUS:   *value7
+          GEO_DAMAGE_BONUS:     *value7
+          ELECTRO_DAMAGE_BONUS: *value7
+          DENDRO_DAMAGE_BONUS:  *value7
+          HYDRO_DAMAGE_BONUS:   *value7
+          PYRO_DAMAGE_BONUS:    *value7
+          CRYO_DAMAGE_BONUS:    *value7
           ELEMENTAL_MASTERY: [28.0, 59.7, 91.4, 123.1, 154.8, 186.5]
           ENERGY_RECHARGE:   [7.8, 16.6, 25.4, 34.2, 43.0, 51.8]
           CRIT_RATE:     [4.7,  9.9, 15.2, 20.5, 25.8, 31.1]
