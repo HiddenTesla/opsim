@@ -1,6 +1,7 @@
 import React from "react";
-import {Button, Input} from "antd";
+import {Button, Input, Table} from "antd";
 import {useState} from "react";
+import {DurabilityTableEntry} from "../model/DurabilityTableEntry.tsx";
 
 export function DurabilityCalculator() {
 
@@ -11,6 +12,31 @@ export function DurabilityCalculator() {
   const [extraDef, setExtraDef] = useState(0);
   const [enemyLevel, setEnemyLevel] = useState(90);
 
+  const [tableDataSource, setTableDataSource] = useState([] as DurabilityTableEntry[]);
+
+  const columns = [
+    {
+      dataIndex: "totalHp",
+      title: "生命值",
+      key: "totalHp",
+    },
+    {
+      dataIndex: "totalDef",
+      title: "防御力",
+      key: "totalDef",
+    },
+    {
+      dataIndex: "enemyLevel",
+      title: "敌人等级",
+      key: "enemyLevel",
+    },
+    {
+      dataIndex: "durability",
+      title: "坦度",
+      key: "durability",
+    },
+
+  ];
 
   function doCalculate() {
     let hp = Number(basicHp) + Number(extraHp);
@@ -24,6 +50,16 @@ export function DurabilityCalculator() {
     let damageCoefficient = numerator / (def + numerator);
 
     let durability = hp / damageCoefficient;
+
+    let ds = tableDataSource;
+    tableDataSource.push({
+      totalHp: hp,
+      totalDef: def,
+      enemyLevel: eLevel,
+      durability: durability,
+    });
+
+    // setTableDataSource(ds);
 
     console.log(durability);
 
@@ -56,6 +92,11 @@ export function DurabilityCalculator() {
     >
       计算
     </Button>
+
+    <Table
+      dataSource={tableDataSource}
+      columns={columns}
+    />
 
   </>);
 }
