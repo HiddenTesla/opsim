@@ -56,45 +56,43 @@ export function DurabilityCalculator() {
 
     let durability = hp / damageCoefficient;
 
-    let ds = tableDataSource;
-    tableDataSource.push({
+    let ds = [...tableDataSource];
+    ds.push({
       totalHp: hp,
       totalDef: def,
       enemyLevel: eLevel,
       durability: durability,
     });
 
-    // setTableDataSource(ds);
-
+    setTableDataSource(ds);
     console.log(durability);
-
   }
 
   return(<>
 
     <InputCombo
       note={"基础生命值"}
-      defaultValue={basicHp}
+      defaultValue={basicHp.toString()}
       onChange={e => setBasicHp(e.target.value)}
     />
     <InputCombo
       note={"附加生命值"}
-      defaultValue={extraHp}
+      defaultValue={extraHp.toString()}
       onChange={e => setExtraHp(e.target.value)}
     />
     <InputCombo
       note={"基础防御力"}
-      defaultValue={basicDef}
+      defaultValue={basicDef.toString()}
       onChange={e => setBasicDef(e.target.value)}
     />
     <InputCombo
       note={"附加防御力"}
-      defaultValue={extraDef}
+      defaultValue={extraDef.toString()}
       onChange={e => setExtraDef(e.target.value)}
     />
     <InputCombo
       note={"敌人等级"}
-      defaultValue={enemyLevel}
+      defaultValue={enemyLevel.toString()}
       onChange={e => setEnemyLevel(e.target.value)}
     />
     <Button
@@ -104,7 +102,7 @@ export function DurabilityCalculator() {
     </Button>
 
     <Table
-      dataSource={tableDataSource}
+      dataSource={[...tableDataSource]}
       columns={columns}
     />
 
