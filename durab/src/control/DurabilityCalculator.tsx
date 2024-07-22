@@ -2,6 +2,7 @@ import React from "react";
 import {Button, Input, Table} from "antd";
 import {useState} from "react";
 import {DurabilityTableEntry} from "../model/DurabilityTableEntry.tsx";
+import {InputCombo} from "./InputCombo.tsx";
 
 export function DurabilityCalculator() {
 
@@ -67,24 +68,29 @@ export function DurabilityCalculator() {
 
   return(<>
 
-    <Input
-      placeholder={"基础生命值"}
+    <InputCombo
+      note={"基础生命值"}
+      defaultValue={"10164"}
       onChange={e => setBasicHp(e.target.value)}
     />
-    <Input
-      placeholder={"附加生命值"}
+    <InputCombo
+      note={"附加生命值"}
+      defaultValue={"4780"}
       onChange={e => setExtraHp(e.target.value)}
     />
-    <Input
-      placeholder={"基础防御力"}
+    <InputCombo
+      note={"基础防御力"}
+      defaultValue={"615"}
       onChange={e => setBasicDef(e.target.value)}
     />
-    <Input
-      placeholder={"附加防御力"}
+    <InputCombo
+      note={"附加防御力"}
+      defaultValue={"0"}
       onChange={e => setExtraDef(e.target.value)}
     />
-    <Input
-      placeholder={"敌人等级"}
+    <InputCombo
+      note={"敌人等级"}
+      defaultValue={"90"}
       onChange={e => setEnemyLevel(e.target.value)}
     />
     <Button
