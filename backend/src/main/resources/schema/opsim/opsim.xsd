@@ -68,4 +68,17 @@
         </xs:sequence>
     </xs:complexType>
 
+  <xs:complexType name="GameRanking">
+    <xs:sequence>
+      <xs:element name="rankId" type="xs:long"/>
+      <xs:element name="name" type="xs:string"/>
+      <xs:element name="year" type="xs:int"/>
+      <xs:element name="note" type="xs:string"/>
+      <xs:element name="publisher" type="xs:string"/>
+      <xs:element name="rank" type="xs:int"/>
+      <xs:element name="pros" type="xs:string"/>
+      <xs:element name="cons" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
 </xs:schema>
