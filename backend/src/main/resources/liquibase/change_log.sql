@@ -33,3 +33,15 @@ CREATE  TABLE  IF NOT EXISTS `rewind_sub_stat` (
 )
 ENGINE = InnoDB DEFAULT CHARSET = UTF8MB4;
 
+CREATE  TABLE  IF NOT EXISTS `game_ranking` (
+  `rank_id`   INT NOT NULL AUTO_INCREMENT,
+  `name`      VARCHAR(256),
+  `year`      INT(32),
+  `note`      VARCHAR(1024),
+  `publisher` VARCHAR(256),
+  `rank`      INT(16),
+  `pros`      TEXT,
+  `cons`      TEXT,
+  PRIMARY KEY(`rank_id`)
+  )
+  ENGINE = InnoDB DEFAULT CHARSET = UTF8MB4;
