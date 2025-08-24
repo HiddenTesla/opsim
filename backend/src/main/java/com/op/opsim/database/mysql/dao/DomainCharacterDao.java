@@ -5,6 +5,8 @@ import com.op.opsim.generated.DomainCharacter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Component
 public class DomainCharacterDao {
 
@@ -16,4 +18,8 @@ public class DomainCharacterDao {
         return count;
     }
 
+    public List<DomainCharacter> getAll() {
+        List<DomainCharacter> characters = domainCharacterMapper.getAll();
+        return characters;
+    }
 }
