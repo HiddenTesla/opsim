@@ -34,6 +34,7 @@ class Rewind extends Component<Props, States> {
         </Input>
 
         <Button
+            type="primary"
           onClick={this.executeRewind.bind(this)}
         >
           倒带遗物

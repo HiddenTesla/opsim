@@ -37,7 +37,8 @@ class Get extends Component<Props, States> {
         </Input>
 
         <Button
-          onClick={this.executeGet.bind(this)}
+            type="primary"
+            onClick={this.executeGet.bind(this)}
         >
           查询遗物
         </Button>
