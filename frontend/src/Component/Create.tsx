@@ -23,7 +23,9 @@ class Create extends Component<Props, States> {
   render() {
     return (
       <div>
-        <Button onClick={this.executeCreate.bind(this)}>
+        <Button
+            type="primary"
+            onClick={this.executeCreate.bind(this)}>
           建一个新的遗物
         </Button>
       <div>{ArtifactRenderer.render(this.state.artifact)}</div>

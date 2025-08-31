@@ -35,6 +35,7 @@ class Enhance extends Component<Props, States> {
           </Input>
 
           <Button
+              type="primary"
               onClick={this.executeEnhance.bind(this)}
           >
             强化遗物
