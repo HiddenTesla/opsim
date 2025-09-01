@@ -15,9 +15,10 @@ public interface DomainCharacterMapper {
     @Insert({
         "INSERT INTO `domain_character` (",
         "`name`, rarity, element_type, weapon_type ",
-        ") VALUES (",
-        "#{name}, #{rarity}, #{elementType}, #{weaponType}",
-        ")",
+        ") SELECT #{name}, #{rarity}, #{elementType}, #{weaponType} ",
+        "FROM DUAL WHERE NOT EXISTS (",
+        "SELECT 1 FROM `domain_character` WHERE `name` = #{name}",
+        ")"
     })
     int insert(DomainCharacter entity);
 

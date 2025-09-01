@@ -38,7 +38,7 @@ public class DomainCharacterController {
         int inserted = domainCharacterDao.insert(character);
         return inserted > 0?
             ResponseEntity.ok(character) :
-            ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+            ResponseEntity.status(HttpStatus.CONFLICT).body(null);
     }
 
     @GetMapping(path = "/all")
