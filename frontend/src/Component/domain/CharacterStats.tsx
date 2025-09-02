@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import {Button, Input, Modal, Select, Table, Tag} from "antd";
 import {Character, ElementType, WeaponType} from "../../Model/Character";
-import {Request} from "../../Request";
+import {OpsimRequest} from "../../OpsimRequest";
 
 export const CharacterStats: React.FC = () => {
   const [characters, setCharacters] = useState([] as Character[]);
@@ -14,7 +14,7 @@ export const CharacterStats: React.FC = () => {
   const weapons = ["SWORD", "CLAYMORE", "POLEARM", "BOW", "CATALYST"];
 
   function query() {
-    Request.getAllCharacters().then(r => {
+    OpsimRequest.getAllCharacters().then(r => {
       setCharacters(r);
     });
   }
@@ -26,7 +26,7 @@ export const CharacterStats: React.FC = () => {
       elementType: characterElementType,
       weaponType: characterWeaponType
     } as Character;
-    Request.addCharacter(characterToAdd).then(r => {
+    OpsimRequest.addCharacter(characterToAdd).then(r => {
       query();
     });
   }

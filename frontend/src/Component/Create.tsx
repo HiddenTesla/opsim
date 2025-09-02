@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Button} from "antd";
-import {Request} from "../Request";
+import {OpsimRequest} from "../OpsimRequest";
 import {Artifact} from "../Model/Artifact";
 import {ArtifactRenderer} from "../Model/ArtifactRenderer";
 
@@ -35,7 +35,7 @@ class Create extends Component<Props, States> {
 
 
   async executeCreate() {
-    let resp = await Request.createArtifact()
+    let resp = await OpsimRequest.createArtifact()
     console.log(resp);
     this.setState({
       artifact: resp,

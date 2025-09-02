@@ -1,7 +1,7 @@
 import {Artifact} from "./Model/Artifact";
 import {Character, StatCharacterResponse} from "./Model/Character";
 
-class Request {
+class OpsimRequest {
 
   static NO_PARAMETER = {};
 
@@ -85,4 +85,4 @@ class Request {
 
 }
 
-export {Request};
+export {OpsimRequest};
