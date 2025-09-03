@@ -1,71 +1,119 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:jaxb="http://java.sun.com/xml/ns/jaxb" jaxb:version="1.0">
 
-    <xs:simpleType name="ArtifactType">
-        <xs:restriction base="xs:string">
-            <xs:enumeration value="Flower"/>
-            <xs:enumeration value="Plume"/>
-            <xs:enumeration value="Sands"/>
-            <xs:enumeration value="Goblet"/>
-            <xs:enumeration value="Circlet"/>
-        </xs:restriction>
-    </xs:simpleType>
+  <xs:simpleType name="ArtifactType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Flower"/>
+      <xs:enumeration value="Plume"/>
+      <xs:enumeration value="Sands"/>
+      <xs:enumeration value="Goblet"/>
+      <xs:enumeration value="Circlet"/>
+    </xs:restriction>
+  </xs:simpleType>
 
-    <xs:simpleType name="StatType">
-        <xs:restriction base="xs:string">
-            <xs:enumeration value="HP_PERCENTAGE"/>
-            <xs:enumeration value="HP_FIXED"/>
-            <xs:enumeration value="ATK_PERCENTAGE"/>
-            <xs:enumeration value="ATK_FIXED"/>
-            <xs:enumeration value="DEF_PERCENTAGE"/>
-            <xs:enumeration value="DEF_FIXED"/>
-            <xs:enumeration value="ELEMENTAL_MASTERY"/>
-            <xs:enumeration value="ENERGY_RECHARGE"/>
-            <xs:enumeration value="PHYSICAL_DAMAGE_BONUS"/>
-            <xs:enumeration value="ANEMO_DAMAGE_BONUS"/>
-            <xs:enumeration value="GEO_DAMAGE_BONUS"/>
-            <xs:enumeration value="ELECTRO_DAMAGE_BONUS"/>
-            <xs:enumeration value="DENDRO_DAMAGE_BONUS"/>
-            <xs:enumeration value="HYDRO_DAMAGE_BONUS"/>
-            <xs:enumeration value="PYRO_DAMAGE_BONUS"/>
-            <xs:enumeration value="CRYO_DAMAGE_BONUS"/>
-            <xs:enumeration value="CRIT_RATE"/>
-            <xs:enumeration value="CRIT_DAMAGE"/>
-            <xs:enumeration value="HEALING_BONUS"/>
-        </xs:restriction> 
-    </xs:simpleType>
+  <xs:simpleType name="StatType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="HP_PERCENTAGE"/>
+      <xs:enumeration value="HP_FIXED"/>
+      <xs:enumeration value="ATK_PERCENTAGE"/>
+      <xs:enumeration value="ATK_FIXED"/>
+      <xs:enumeration value="DEF_PERCENTAGE"/>
+      <xs:enumeration value="DEF_FIXED"/>
+      <xs:enumeration value="ELEMENTAL_MASTERY"/>
+      <xs:enumeration value="ENERGY_RECHARGE"/>
+      <xs:enumeration value="PHYSICAL_DAMAGE_BONUS"/>
+      <xs:enumeration value="ANEMO_DAMAGE_BONUS"/>
+      <xs:enumeration value="GEO_DAMAGE_BONUS"/>
+      <xs:enumeration value="ELECTRO_DAMAGE_BONUS"/>
+      <xs:enumeration value="DENDRO_DAMAGE_BONUS"/>
+      <xs:enumeration value="HYDRO_DAMAGE_BONUS"/>
+      <xs:enumeration value="PYRO_DAMAGE_BONUS"/>
+      <xs:enumeration value="CRYO_DAMAGE_BONUS"/>
+      <xs:enumeration value="CRIT_RATE"/>
+      <xs:enumeration value="CRIT_DAMAGE"/>
+      <xs:enumeration value="HEALING_BONUS"/>
+    </xs:restriction>
+  </xs:simpleType>
 
-    <xs:complexType name="Stat">
-        <xs:sequence>
-            <xs:element name="type"  type="StatType"/>
-            <xs:element name="value" type="xs:double"/>
-        </xs:sequence>
-    </xs:complexType>
+  <xs:complexType name="Stat">
+    <xs:sequence>
+      <xs:element name="type" type="StatType"/>
+      <xs:element name="value" type="xs:double"/>
+    </xs:sequence>
+  </xs:complexType>
 
-    <xs:complexType name="Artifact">
-        <xs:sequence>
-            <xs:element name="artifactId" type="xs:int"/>
-            <xs:element name="rarity" type="xs:int"/>
-            <xs:element name="type" type="ArtifactType"/>
-            <xs:element name="level" type="xs:int"/>
-            <xs:element name="mainStat" type="Stat"/>
-            <xs:element name="subStats" type="Stat" minOccurs="0" maxOccurs="unbounded"/>
-        </xs:sequence>
-    </xs:complexType>
+  <xs:complexType name="Artifact">
+    <xs:sequence>
+      <xs:element name="artifactId" type="xs:int"/>
+      <xs:element name="rarity" type="xs:int"/>
+      <xs:element name="type" type="ArtifactType"/>
+      <xs:element name="level" type="xs:int"/>
+      <xs:element name="mainStat" type="Stat"/>
+      <xs:element name="subStats" type="Stat" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
 
-    <xs:complexType name="EnhanceResult">
-        <xs:sequence>
-            <xs:element name="enhancedSubStat" type="Stat"/>
-            <xs:element name="artifact" type="Artifact"/>
-        </xs:sequence>
-    </xs:complexType>
+  <xs:complexType name="EnhanceResult">
+    <xs:sequence>
+      <xs:element name="enhancedSubStat" type="Stat"/>
+      <xs:element name="artifact" type="Artifact"/>
+    </xs:sequence>
+  </xs:complexType>
 
-    <xs:complexType name="ItemUntilResult">
-        <xs:sequence>
-            <xs:element name="target" type="xs:int"/>
-            <xs:element name="size" type="xs:int"/>
-            <xs:element name="sequence" type="xs:int" minOccurs="0" maxOccurs="unbounded"/>
-        </xs:sequence>
-    </xs:complexType>
+  <xs:complexType name="ItemUntilResult">
+    <xs:sequence>
+      <xs:element name="target" type="xs:int"/>
+      <xs:element name="size" type="xs:int"/>
+      <xs:element name="sequence" type="xs:int" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:simpleType name="ElementType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="ANEMO"/>
+      <xs:enumeration value="GEO"/>
+      <xs:enumeration value="ELECTRO"/>
+      <xs:enumeration value="DENDRO"/>
+      <xs:enumeration value="HYDRO"/>
+      <xs:enumeration value="PYRO"/>
+      <xs:enumeration value="CRYO"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="WeaponType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="SWORD"/>
+      <xs:enumeration value="CLAYMORE"/>
+      <xs:enumeration value="BOW"/>
+      <xs:enumeration value="POLEARM"/>
+      <xs:enumeration value="CATALYST"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:complexType name="DomainCharacter">
+    <xs:sequence>
+      <xs:element name="characterId" type="xs:int"/>
+      <xs:element name="name"        type="xs:string"/>
+      <xs:element name="rarity"      type="xs:int"/>
+      <xs:element name="elementType" type="ElementType"/>
+      <xs:element name="weaponType"  type="WeaponType"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="ByElementType">
+    <xs:sequence>
+      <xs:element name="elementType" type="ElementType"/>
+      <xs:element name="count" type="xs:int"/>
+      <xs:element name="characters" type="DomainCharacter" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="StatCharacterResponse">
+    <xs:sequence>
+      <xs:element name="elementTypes" type="ElementType" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="weaponTypes"  type="WeaponType"  minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="byElementTypes" type="ByElementType" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
 
 </xs:schema>

@@ -1,6 +1,7 @@
 import {Artifact} from "./Model/Artifact";
+import {Character, StatCharacterResponse} from "./Model/Character";
 
-class Request {
+class OpsimRequest {
 
   static NO_PARAMETER = {};
 
@@ -10,6 +11,7 @@ class Request {
 
   static endpoint: string = this.endpoints["local"];
 
+  static HEADER_JSON = {"Content-type": "application/json"};
 
   static async callBackend(input: RequestInfo, init?: RequestInit): Promise<any> {
     if (!init) init = {}
@@ -59,6 +61,28 @@ class Request {
     return respJson.artifact as Artifact;
   }
 
+  static async getAllCharacters(): Promise<Character[]> {
+    let fullUrl = this.concatUrl("/domain/character/all", this.NO_PARAMETER);
+    let respJson = await this.callBackend(fullUrl, {method: "GET"});
+    return respJson as Character[];
+  }
+
+  static async addCharacter(character: Character): Promise<Character> {
+    let fullUrl = this.concatUrl("/domain/character", this.NO_PARAMETER);
+    let respJson = await this.callBackend(fullUrl, {
+      method: "POST",
+      body: JSON.stringify(character),
+      headers: this.HEADER_JSON,
+    });
+    return respJson as Character;
+  }
+
+  static async getByElementTypes(): Promise<StatCharacterResponse> {
+    let fullUrl = this.concatUrl("/domain/character/by-element", this.NO_PARAMETER);
+    let respJson = await this.callBackend(fullUrl, {method: "GET"});
+    return respJson as StatCharacterResponse;
+  }
+
 }
 
-export {Request};
+export {OpsimRequest};

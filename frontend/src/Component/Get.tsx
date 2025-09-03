@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Input, Button} from "antd";
-import {Request} from "../Request";
+import {OpsimRequest} from "../OpsimRequest";
 import {Artifact} from "../Model/Artifact";
 import {ArtifactRenderer} from "../Model/ArtifactRenderer";
 
@@ -50,7 +50,7 @@ class Get extends Component<Props, States> {
   }
 
   async executeGet() {
-    let resp = await Request.getArtifact(this.state.inputText);
+    let resp = await OpsimRequest.getArtifact(this.state.inputText);
     this.setState({artifact: resp});
   }
 }

@@ -2,7 +2,7 @@ import {Artifact} from "../Model/Artifact";
 import React, {Component} from "react";
 import {Button, Input} from "antd";
 import {ArtifactRenderer} from "../Model/ArtifactRenderer";
-import {Request} from "../Request";
+import {OpsimRequest} from "../OpsimRequest";
 
 type Props = {
 }
@@ -47,7 +47,7 @@ class Enhance extends Component<Props, States> {
   }
 
   async executeEnhance() {
-    let resp = await Request.enhanceArtifact(this.state.inputText);
+    let resp = await OpsimRequest.enhanceArtifact(this.state.inputText);
     this.setState({artifact: resp});
   }
 

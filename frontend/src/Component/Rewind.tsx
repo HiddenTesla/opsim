@@ -2,7 +2,7 @@ import {Artifact} from "../Model/Artifact";
 import React, {Component} from "react";
 import {Button, Input} from "antd";
 import {ArtifactRenderer} from "../Model/ArtifactRenderer";
-import {Request} from "../Request";
+import {OpsimRequest} from "../OpsimRequest";
 
 type Props = {
 }
@@ -46,7 +46,7 @@ class Rewind extends Component<Props, States> {
   }
 
   async executeRewind() {
-    let resp = await Request.rewindArtifact(this.state.inputText);
+    let resp = await OpsimRequest.rewindArtifact(this.state.inputText);
     this.setState({artifact: resp});
   }
 
