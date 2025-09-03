@@ -1,5 +1,6 @@
 import {Artifact} from "./Model/Artifact";
 import {Character, StatCharacterResponse} from "./Model/Character";
+import {DomainKnowledge} from "./Model/DomainKnowledge";
 
 class OpsimRequest {
 
@@ -81,6 +82,12 @@ class OpsimRequest {
     let fullUrl = this.concatUrl("/domain/character/by-element", this.NO_PARAMETER);
     let respJson = await this.callBackend(fullUrl, {method: "GET"});
     return respJson as StatCharacterResponse;
+  }
+
+  static async getDomainKnowledge(): Promise<DomainKnowledge> {
+    let fullUrl = this.concatUrl("/domain", this.NO_PARAMETER);
+    let respJson = await this.callBackend(fullUrl, {method: "GET"});
+    return respJson as DomainKnowledge;
   }
 
 }

@@ -1,7 +1,7 @@
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://${holder.mysql.hostname}:3306/opsim?serverTimezone=UTC
+    url: jdbc:mysql://10.86.49.40:3306/opsim?serverTimezone=UTC
     username: root
     password: root
 
@@ -10,6 +10,43 @@ holder:
     hostname: localhost
 
 opsim:
+  element:
+    types:
+    - code: ANEMO
+      translations:
+        zh-CN: 风
+        zh-TW: 風
+    - code: GEO
+      translations:
+        zh-CN: 岩
+        zh-TW: 岩
+    - code: ELECTRO
+      translations:
+        zh-CN: 雷
+        zh-TW: 雷
+    - code: DENDRO
+      translations:
+        zh-CN: 草
+        zh-TW: 草
+    - code: HYDRO
+      translations:
+        zh-CN: 水
+        zh-TW: 水
+    - code: PYRO
+      translations:
+        zh-CN: 火
+        zh-TW: 火
+    - code: CRYO
+      translations:
+        zh-CN: 冰
+        zh-TW: 冰
+  weapon:
+    types:
+    - code: SWARD
+      translations:
+        zh-CN: 单手剑
+        zh-TW: 單手劍
+
   artifact:
     level:
       step: 4
@@ -17,7 +54,7 @@ opsim:
     probability:
       quantity:
         substat:
-          3: 80
+          3: 0
           4: 20
       mainstat:
         any: # Rarity
@@ -60,12 +97,12 @@ opsim:
             ATK_FIXED: 15.00
             DEF_FIXED: 15.00
             HP_PERCENTAGE: 10.00
-            ATK_PERCENTAGE: 10.00
+            ATK_PERCENTAGE: 100
             DEF_PERCENTAGE: 10.00
-            ENERGY_RECHARGE: 10.00
+            ENERGY_RECHARGE: 100
             ELEMENTAL_MASTERY: 10.00
-            CRIT_RATE:   7.50
-            CRIT_DAMAGE: 7.50
+            CRIT_RATE:   1e6
+            CRIT_DAMAGE: 1e6
 
     scaling:
       template:

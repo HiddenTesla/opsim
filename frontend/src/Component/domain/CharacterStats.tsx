@@ -1,7 +1,8 @@
-import React, {useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import {Button, Input, Modal, Select, Table, Tag} from "antd";
 import {Character, ElementType, WeaponType} from "../../Model/Character";
 import {OpsimRequest} from "../../OpsimRequest";
+import {OpsimContext} from "../context/ContextProvider";
 
 export const CharacterStats: React.FC = () => {
   const [characters, setCharacters] = useState([] as Character[]);
@@ -12,6 +13,16 @@ export const CharacterStats: React.FC = () => {
 
   const elements = ["PYRO", "HYDRO", "CRYO", "ELECTRO", "GEO", "ANEMO", "DENDRO"];
   const weapons = ["SWORD", "CLAYMORE", "POLEARM", "BOW", "CATALYST"];
+
+  const opsimContext = useContext(OpsimContext);
+
+  useEffect(() => {
+    let elementI18ns = opsimContext.elementI18ns;
+    let weaponI18ns  = opsimContext.weaponI18ns;
+    console.log("Element I18n:", elementI18ns);
+    console.log("Weapon I18n:", weaponI18ns);
+  }, []);
+
 
   function query() {
     OpsimRequest.getAllCharacters().then(r => {

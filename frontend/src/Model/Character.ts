@@ -20,3 +20,10 @@ export type StatCharacterResponse = {
   weaponTypes:  WeaponType[];
   byElementTypes: ByElementType[];
 };
+
+export type ElementI18n = {
+  code: string;
+  translations: Map<string, string>;
+};
+
+export type WeaponI18n = ElementI18n;
