@@ -42,3 +42,13 @@ CREATE TABLE IF NOT EXISTS `domain_character` (
   PRIMARY KEY(`character_id`)
 )
 ENGINE = InnoDB DEFAULT CHARSET = UTF8MB4;
+
+CREATE  TABLE  IF NOT EXISTS `user` (
+    `uid`      INT NOT NULL AUTO_INCREMENT,
+    `username`       VARCHAR(256),
+    `password_sha1`  VARCHAR(256),
+    `salt`           VARCHAR(256),
+    CONSTRAINT `Unique_username`  UNIQUE(`username`),
+    PRIMARY KEY(`uid`)
+)
+ENGINE = InnoDB DEFAULT CHARSET = UTF8MB4;
