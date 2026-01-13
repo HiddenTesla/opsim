@@ -1,0 +1,30 @@
+{
+  "artifactTypeTranslationMap": {
+    "FLOWER": "生之花",
+    "PLUME": "死之羽",
+    "SANDS": "时之沙",
+    "GOBLET": "空之杯",
+    "CIRCLET": "理之冠"
+  },
+  "artifactStatTypeTranslationMap": {
+    "HP_PERCENTAGE": "生命值",
+    "HP_FIXED": "生命值",
+    "DEF_PERCENTAGE": "防御力",
+    "DEF_FIXED": "防御力",
+    "ATK_PERCENTAGE": "攻击力",
+    "ATK_FIXED": "攻击力",
+    "ELEMENTAL_MASTERY": "元素精通",
+    "ENERGY_RECHARGE": "元素充能效率",
+    "PHYSICAL_DAMAGE_BONUS": "物理伤害加成",
+    "ANEMO_DAMAGE_BONUS": "风元素伤害加成",
+    "GEO_DAMAGE_BONUS": "岩元素伤害加成",
+    "ELECTRO_DAMAGE_BONUS": "雷元素伤害加成",
+    "DENDRO_DAMAGE_BONUS": "草元素伤害加成",
+    "HYDRO_DAMAGE_BONUS": "水元素伤害加成",
+    "PYRO_DAMAGE_BONUS": "火元素伤害加成",
+    "CRYO_DAMAGE_BONUS": "冰元素伤害加成",
+    "CRIT_RATE": "暴击率",
+    "CRIT_DAMAGE": "暴击伤害",
+    "HEALING_BONUS": "治疗加成"
+  }
+}
