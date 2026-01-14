@@ -116,4 +116,11 @@
     </xs:sequence>
   </xs:complexType>
 
+  <xs:complexType name="SlackMessageResponse">
+    <xs:sequence>
+      <xs:element name="text" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+
 </xs:schema>
