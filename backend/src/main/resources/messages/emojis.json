@@ -1,0 +1,103 @@
+[
+  {
+    "name": "knowledgeLevel",
+    "emojis": [
+    ":haipa:", ":angryfrog:", ":frog:", ":froghyper:", ":xuexiyige:", ":wukefenggao:",
+    ":frogr:", ":frogred:", ":frogorange:", ":frogblue:", ":frogpurple:", ":frogcamo:", ":froggentleman:", ":frogsigh:", ":frogular:", ":squintfrog:",
+    ":naive:", ":wallace:", ":zici:", ":tanxiaofengsheng:", ":suwako:",
+    ":tungcheehwa:", ":董先生:", ":the-man-who-changed-china:", ":他改变了中国:"
+    ]
+  },
+  {
+    "name": "op",
+    "emojis": [
+      ":qiqi:", ":keqing-fallen:", ":ganyu-fallen:", ":hutao-fallen:", ":venti_fallen:", ":kleemote:", ":paimon-eat:", ":paimon-shock:",
+      ":hutao_evil_laugh:", ":zhonglismile:", ":genshin-raiden-shogun-cry:", ":linghuashy:", ":guiguiwatching:", ":yaemiko-fallen:"
+    ]
+  },
+  {
+    "name": "op_avators",
+    "emojis": [
+      ":qiqi77:", ":diluc:", ":jean:", ":keqing:", ":yoimiya:", ":nahida:", ":klee:", ":nilou:", ":genshin-mona:", ":ayaka:", ":yaoyao:",
+    ]
+  },
+  {
+    "name": "op_elements",
+    "emojis": [
+        ":element_pyro:", ":element_hydro:", ":element_anemo:", ":element_electro:", ":element_dendro:", ":element_cryo:", ":element_geo:"
+    ]
+  {
+    "name": "yuanpee",
+    "emojis": [
+      ":yuanpee-anime:", ":yuanpee-static:"
+    ]
+  },
+  {
+    "name": "redTea",
+    "emojis": [
+        ":kevinh:", ":114514:", ":114514-pixel:", ":yjsnpi_kanji_simplified_art:"
+    ]
+  },
+  {
+    "name": "food",
+    "emojis": [
+        ":katsu-don:", ":caokefan:", ":paimon-eat:", ":subway:", ":711:", ":frog::chicken:", ":kfc:", ":mc:", ":ramen:", ":curry:", ":sandwich:", ":pig::chicken::hotpot:"
+    ]
+  },
+  {
+    "name": "cccp",
+    "emojis": [
+        ":khrushchev:", ":brezhnev:", ":putin:", ":slytherin:", ":cnc3nod:", ":hirosaki:", ":voldemort:"
+    ]
+  },
+  {
+    "name": "mius",
+    "emojis": [
+        ":amazing:", ":umigane:", ":rinv:", ":makihmm:", ":elishock:", ":nozoheh:"
+    ]
+  },
+  {
+    "name": "zhin",
+    "emojis": [
+        ":caixukun:", ":jinitaimei:", ":jinitaimei2:", ":jinitaimei-1:", ":jinitaimei-2:", ":ikurrina:", ":jinitaimei4:", ":zhiyinnitaimei:"
+    ]
+  },
+  {
+    "name": "intestin",
+    "emojis": [
+        ":yutao:", ":caokefan:"
+    ]
+  },
+  {
+    "name": "anya",
+    "emojis": [
+        ":hehespy:", ":anya:", ":anya2:", ":anyaheh:", ":anyanoo:", ":anya-yay:", ":anya_gun:", ":anyashock:", ":anyasalute:", ":anyaconcern:", ":anyasparkle:", ":aniyacrying:", ":aniyaspeechless:"
+    ]
+  },
+  {
+    "name": "ops",
+    "emojis": [
+        ":op:", ":op2:", ":op3:", ":yuanpee-static:", ":yuanpee-anime:"
+    ]
+  },
+  {
+    "name": "nya",
+    "emojis": [
+        ":ok-nya:", ":cry-nya:", ":run-nya:", ":sad-nya:", ":bow-nya:", ":bye-nya:", ":eat-nya:",
+        ":fire-nya:", ":sing-nya:", ":cry2-nya:", ":beer-nya:", ":clap-nya:", ":cold-nya:", ":dead-nya:",
+        ":ah-ha-nya:", ":sleep-nya:", ":agree-nya:", ":angel-nya:", ":angry-nya:", ":sleepy-nya:", ":cheer-nya:", ":chira-nya:", ":clock-nya:"
+    ]
+  },
+  {
+    "name": "buy",
+    "emojis": [
+        ":macbookpro:", ":iphone:", ":huawei:", ":op3:", ":klee:", ":laptop:", ":flower:", ":watch:", ":car:"
+    ]
+  },
+  {
+    "name": "european",
+    "emojis": [
+        ":wodkp:", ":lyywl:"
+    ]
+  }
+]

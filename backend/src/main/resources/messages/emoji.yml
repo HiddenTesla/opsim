@@ -1,0 +1,8 @@
+opsim:
+  messages:
+    emojis:
+      enabled: true
+    game:
+      enabled: true
+    magic:
+      enabled: true
